@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="emily-wilson-to-retranslate-the-odyssey-from-scratch">Emily
+Wilson to retranslate the Odyssey from scratch</h1>
+<p>Writer who criticised Christopher Nolan film based on her 2017
+translation is working on new version of Homer’s poem</p>
+<p>1 September 2026</p>
+<p>Emma Loffhagen</p>
+<p><img role="img" aria-label="‘It’s a complete retranslation. It’s not a revision of the old version’ … Emily Wilson." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-21_2026-09-21_Day2_卫报奥德赛重译_1.jpg" alt="‘It’s a complete retranslation. It’s not a revision of the old version’ … Emily Wilson." />
+<em>Photograph: Matt Rourke/AP</em></p>
+<p>Emily Wilson, the first woman to translate Homer’s Odyssey into
+English, is to retranslate the ancient Greek epic poem from scratch less
+than a decade after the publication of her acclaimed version.</p>
+<p>The announcement comes after Wilson attracted controversy this summer
+with a scathing assessment of Christopher Nolan’s blockbuster film
+adaptation of the Odyssey, which she slammed for its “abysmal” writing
+and lack of sex scenes.</p>
+<p>Wilson’s 2017 translation became a bestseller and was praised for
+making the 3,000-year-old epic poem modern and accessible.</p>
+<p>“I’m now retranslating the Odyssey from scratch, with an approach
+closer to that of my translation of the Iliad, using somewhat more lines
+than the original, enabling more varied word-length and pacing,” she
+told the New York Times.</p>
+<p>“It’s a complete retranslation. It’s not a revision of the old
+version,” she told the AP. “I’m about halfway through.”</p>
+<p>Nolan cited Wilson’s 2017 translation, including its opening
+sentence, “Tell me about a complicated man”, as an influence on his
+adaptation of the poem, released in July this year and starring Tom
+Holland, Zendaya, Matt Damon and Anne Hathaway.</p>
+<p>Nolan’s adaptation took the global box office by storm, making $264m
+(£196m) during its opening weekend, marking the director’s best ever
+opening. Book sales saw a huge bump too: UK print sales of the poem
+increased by 1,400% in the four weeks to 25 July compared with the same
+period in 2025, after the film’s release in the middle of the month.</p>
+<p>Wilson made headlines for her attack on Nolan’s version. Writing in
+the London Review of Books, she said: “Nolan’s Odyssey lacks many of the
+elements that make the poem great … The writing is abysmal.”</p>
+<p>She continued: “None of the characters has convincing motivation for
+their actions or words. There are no sex scenes, and all the food looks
+horrible,” adding, “I would be ashamed to have written any part of this
+script.”</p>
+<p>Her criticism attracted strong reactions, including from novelist
+Joyce Carol Oates, who accused Wilson of “haughty superiority”.</p>
+<p>Wilson’s decision to retranslate the poem predates the row over the
+film. In an interview recorded in the spring for the ancient-history
+podcast Instant Classics, she discussed her desire to return to Homer
+and approach the poem differently from her first translation.</p>
+<p>“I’m proud of my Odyssey translation … I think there are lots of good
+things about the kinds of compression and choices that I was forced
+into,” Wilson said then.</p>
+<p>She has indicated that she will “probably” keep the opening line,
+“Tell me about a complicated man”. Wilson also added that her original
+translation relied too heavily on the word “slave”, when more precise
+terminology could have better reflected the different forms of
+enslavement depicted in the poem.</p>
+<p>The new translation will also give readers far more of Wilson’s
+scholarly commentary. “I’m also going to quadruple the number of
+endnotes because endnotes are really fun to write,” she said.</p>
+<p>While Wilson’s decision to retranslate Homer’s poem is unusual, it is
+not without precedent.</p>
+<p>“Translators quite often rework or rewrite their own previous
+translations,” said Matthew Reynolds, professor of English and
+comparative criticism at Oxford University.</p>
+<p>“Elizabeth Barrett Browning completely rewrote her translation of
+Aeschylus’s Prometheus Bound, Ezra Pound repeatedly revised his
+translations of Guido Cavalcanti, and Yu JongHo (유종호) translated Jane
+Eyre into Korean first in 1970 and again in 2004.”</p>
+<p>He added: “It shows that translation – especially literary
+translation – is not just a matter of right or wrong, good or bad, but a
+continual exploratory process of interpretive reimagining and
+re-making.”</p>
+<p>Wilson’s new Odyssey does not yet have a publication date.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>retranslate</td>
+<td>v.</td>
+<td>重译、重新翻译</td>
+<td>re-（再次）+ translate；名词 retranslation</td>
+</tr>
+<tr>
+<td>from scratch</td>
+<td>短语</td>
+<td>从零开始、从头做起</td>
+<td>retranslate from scratch = 推倒重来地重译</td>
+</tr>
+<tr>
+<td>scathing</td>
+<td>adj.</td>
+<td>严厉尖刻的</td>
+<td>scathing assessment / criticism</td>
+</tr>
+<tr>
+<td>slam</td>
+<td>v.</td>
+<td>猛烈抨击</td>
+<td>新闻口语，≈ strongly criticise</td>
+</tr>
+<tr>
+<td>blockbuster</td>
+<td>n.</td>
+<td>大片；轰动性作品</td>
+<td>“票房炸弹”；近义 a box-office hit</td>
+</tr>
+<tr>
+<td>box office</td>
+<td>n.</td>
+<td>票房（收入）</td>
+<td>第二义项：不是”售票处”</td>
+</tr>
+<tr>
+<td>take … by storm</td>
+<td>短语</td>
+<td>席卷、迅速征服</td>
+<td>took the global box office by storm</td>
+</tr>
+<tr>
+<td>bump</td>
+<td>n.</td>
+<td>（数量的）跃升</td>
+<td>a huge bump（本义是”撞、颠簸”）</td>
+</tr>
+<tr>
+<td>release</td>
+<td>n./v.</td>
+<td>上映；发行</td>
+<td>第二义项：the film’s release = 电影上映</td>
+</tr>
+<tr>
+<td>row</td>
+<td>n.</td>
+<td>争吵、风波</td>
+<td>读 /raʊ/；英式新闻高频（≠“行列”）</td>
+</tr>
+<tr>
+<td>predate</td>
+<td>v.</td>
+<td>早于、先于</td>
+<td>pre- + date；反义 postdate</td>
+</tr>
+<tr>
+<td>precedent</td>
+<td>n.</td>
+<td>先例</td>
+<td>not without precedent = 并非没有先例</td>
+</tr>
+<tr>
+<td>rework</td>
+<td>v.</td>
+<td>改写、重做</td>
+<td>rework / rewrite a translation</td>
+</tr>
+<tr>
+<td>revise</td>
+<td>v.</td>
+<td>修订、修改</td>
+<td>第二义项：英式英语里 revise 还指”复习”</td>
+</tr>
+<tr>
+<td>haughty</td>
+<td>adj.</td>
+<td>傲慢的、居高临下的</td>
+<td>“haughty superiority”傲慢的优越感</td>
+</tr>
+<tr>
+<td>abysmal</td>
+<td>adj.</td>
+<td>糟透的</td>
+<td>≈ dreadful、terrible</td>
+</tr>
+<tr>
+<td>quadruple</td>
+<td>v.</td>
+<td>（使）成四倍</td>
+<td>quadruple the number of endnotes</td>
+</tr>
+<tr>
+<td>endnote</td>
+<td>n.</td>
+<td>尾注（书末注释）</td>
+<td>footnote 脚注 vs endnote 尾注</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

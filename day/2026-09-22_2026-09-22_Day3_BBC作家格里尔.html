@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="british-american-author-and-critic-bonnie-greer-dies-aged-77">British-American
+author and critic Bonnie Greer dies aged 77</h1>
+<p>16 September 2026</p>
+<p>Paul Glynn, Culture reporter</p>
+<p><img role="img" aria-label="Bonnie Greer speaks on stage at the BFI Southbank in London in 2016" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-22_2026-09-22_Day3_BBC作家格里尔_1.jpg" alt="Bonnie Greer speaks on stage at the BFI Southbank in London in 2016" />
+<em>Getty Images: Greer’s work often tackled topics around culture, race
+and public institutions</em></p>
+<p>British-American author and cultural commentator Bonnie Greer has
+died at the age of 77 after a brief illness, her husband has said.</p>
+<p>In a statement delivered with “profound sadness”, Greer’s widower
+David Hutchins noted how the acclaimed playwright and critic had made
+“an enduring contribution to British cultural and public life” with her
+“intelligence, courage and distinctive voice”.</p>
+<p>He added: “To me, she was my partner, confidante and inspiration, and
+I feel profoundly privileged to have shared my life with her.”</p>
+<p>Hutchins continued: “Those closest to Bonnie will remember her
+warmth, humour, generosity and extraordinary ability to bring people
+together.”</p>
+<p><strong>‘Courage, humour and humanity’</strong></p>
+<p>BBC presenter Clive Myrie led the tributes from elsewhere, posting on
+X: “This is such a shock. She was a friend and mentor and I will miss
+her with all my heart.”</p>
+<p>Former deputy prime minister David Lammy called Greer “a powerful
+wordsmith and artist, she was eloquent and exacting”.</p>
+<p>He added that she was “a true life force” and he would “never forget
+her quiet fearlessness taking on Nick Griffin” during an appearance with
+the then-British National Party (BNP) leader on the BBC’s Question Time
+in 2009.</p>
+<p>Lammy added: “I will miss her mentorship, and her friendship.”</p>
+<p>London Mayor Sadiq Khan said Greer’s voice brought “courage, humour
+and humanity to Britain’s cultural conversation”.</p>
+<p>He said: “She inspired and opened doors for so many others. And she
+was great fun too - I will miss her friendship enormously.”</p>
+<p><strong>Plays, novels and panel shows</strong></p>
+<p>Born in Chicago in 1948, Greer wrote plays from a young age and went
+on to study theatre in her home city and before attending the Actors
+Studio in New York with director Elia Kazan.</p>
+<p>Greer moved to the UK in 1986 and became a familiar face on UK TV,
+appearing as a frequent panellist on programmes like Question Time and
+Newsnight Review, debating the topics of the day.</p>
+<p>She penned award-winning works like Munda Negra, which won her the
+Verity Bargate Award for best play, and novels such as Hanging by Her
+Teeth (1994) and Entropy (2009).</p>
+<p>Once named by the Observer as one of the country’s leading public
+intellectuals, Greer’s work - across a range of disciplines and
+platforms - often tackled issues around culture, race and public
+institutions.</p>
+<p><img role="img" aria-label="Bonnie Greer holding up her OBE medal" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-22_2026-09-22_Day3_BBC作家格里尔_2.jpg" alt="Bonnie Greer holding up her OBE medal" /> <em>Getty Images: Greer
+was made an OBE for services to the arts in 2010</em></p>
+<p>Speaking to the Guardian in 2016 in the aftermath of the Black Lives
+Matter movement, Greer said: “When I wake up in the morning, I’m just
+myself. It’s only when I leave the door that I become a black woman to
+the world.”</p>
+<p>She added: “I tell black women all the time, ‘Don’t apologise for
+yourself and keep your hair nappy. Make sure you are heard’.”</p>
+<p>Greer served on the boards of cultural institutions including the
+British Museum, Royal Opera House and London Film School, and was
+chancellor of London’s Kingston University.</p>
+<p>Her other published works include a memoir titled A Parallel Life and
+a biography of US poet and playwright Langston Hughes.</p>
+<p>Also in 2009, her part-memoir, part-music-history book, Obama Music,
+was published.</p>
+<p>Greer was made an OBE in 2010 for services to the arts.</p>
+<p>In 2022, she was appointed as a fellow of the Royal Society of
+Literature.</p>
+<p>Broadcaster and author John Simpson added to the tributes on
+Wednesday, posting: “So sad to hear of the death of the writer and
+critic Bonnie Greer.</p>
+<p>“She was a good friend, and gave me strong support at a time I needed
+it. Fiercely intelligent, but always avoided personal attacks. A huge
+loss.”</p>
+<p>Fellow journalist and broadcaster Sangita Myska, who interviewed
+Greer several times, recalled her as having been a “smart, sassy,
+firebrand who will be missed from our public discourse”.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tribute</td>
+<td>n.</td>
+<td>悼念、致敬（之词）</td>
+<td>lead the tributes = 率先致哀</td>
+</tr>
+<tr>
+<td>widower</td>
+<td>n.</td>
+<td>鳏夫</td>
+<td>widow（寡妇）的男性形式</td>
+</tr>
+<tr>
+<td>confidante</td>
+<td>n.</td>
+<td>知己、密友</td>
+<td>女性密友；男性拼 confidant</td>
+</tr>
+<tr>
+<td>playwright</td>
+<td>n.</td>
+<td>剧作家</td>
+<td>play + wright（匠人）</td>
+</tr>
+<tr>
+<td>wordsmith</td>
+<td>n.</td>
+<td>文字大师、文字匠</td>
+<td>word + smith（铁匠）</td>
+</tr>
+<tr>
+<td>exacting</td>
+<td>adj.</td>
+<td>严格较真的、要求高的</td>
+<td>形容人／标准；动词 exact = 索取</td>
+</tr>
+<tr>
+<td>pen</td>
+<td>v.</td>
+<td>执笔撰写</td>
+<td>She penned…；名词“钢笔”</td>
+</tr>
+<tr>
+<td>board</td>
+<td>n.</td>
+<td>理事会、董事会</td>
+<td>serve on the boards；第二义项非“木板”</td>
+</tr>
+<tr>
+<td>chancellor</td>
+<td>n.</td>
+<td>（大学）名誉校长</td>
+<td>英国大学最高名誉职；另一义“（财政）大臣”</td>
+</tr>
+<tr>
+<td>fellow</td>
+<td>n.</td>
+<td>（学会）院士、会员</td>
+<td>RSL fellow；第二义项非“家伙”</td>
+</tr>
+<tr>
+<td>discourse</td>
+<td>n.</td>
+<td>公共话语、讨论</td>
+<td>public discourse 公共言说</td>
+</tr>
+<tr>
+<td>firebrand</td>
+<td>n.</td>
+<td>斗士、敢言闯将</td>
+<td>热情好斗之人（略含“惹火”色彩）</td>
+</tr>
+<tr>
+<td>sassy</td>
+<td>adj.</td>
+<td>泼辣、时髦敢言的</td>
+<td>口语褒义</td>
+</tr>
+<tr>
+<td>take on</td>
+<td>短语</td>
+<td>与……交锋、迎战</td>
+<td>take sb on；此处取“迎战”义（另有“承担”义，如 take on work）</td>
+</tr>
+<tr>
+<td>in the aftermath of</td>
+<td>短语</td>
+<td>在……的余波中</td>
+<td>aftermath = 后果、余波</td>
+</tr>
+<tr>
+<td>recall</td>
+<td>v.</td>
+<td>回忆道、追忆</td>
+<td>第二义项：不是“召回”</td>
+</tr>
+<tr>
+<td>public intellectual</td>
+<td>n.</td>
+<td>公共知识分子</td>
+<td>就公共议题公开发声的学者作家</td>
+</tr>
+<tr>
+<td>the then-…</td>
+<td>前缀</td>
+<td>当时的……</td>
+<td>the then-BNP leader 时任党魁</td>
+</tr>
+<tr>
+<td>make an OBE</td>
+<td>短语</td>
+<td>获授 OBE 勋章</td>
+<td>make = 授予；OBE = 英帝国官佐勋章</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

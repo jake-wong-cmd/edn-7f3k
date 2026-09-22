@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="ancient-roman-shipwreck-discovered-off-sicily-coast">Ancient
+Roman shipwreck discovered off Sicily coast</h1>
+<p>9 August 2026</p>
+<p>Ian Aikman and Mimi Swaby, global affairs reporters</p>
+<p><img role="img" aria-label="Shipwreck with amphorae hoard discovered off Sicily coast" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-20_2026-09-20_Day1_BBC罗马沉船_1.jpg" alt="Shipwreck with amphorae hoard discovered off Sicily coast" />
+<em>Shipwreck with amphorae hoard discovered off Sicily coast</em></p>
+<p>Italian divers have discovered an ancient Roman shipwreck off the
+coast of Sicily, believed to be more than 2,000 years old.</p>
+<p>The vessel was found piled high with hundreds of well-preserved
+containers, which were used to transport goods such as wine and olive
+oil.</p>
+<p>Italy’s Culture Minister Alessandro Giuli hailed the wreck as “one of
+the most important underwater archaeological discoveries of recent
+years”.</p>
+<p>Specialist police divers found the ship around 46m (150ft) deep,
+after a tip-off from fishermen. The wreckage is 21m (69ft) long and 6m
+(20ft) wide, according to reports in local media.</p>
+<p>The culture ministry says it dates from the second or 1st Century
+BC.</p>
+<p>Fisherman and free-diver Giacomo De Mola described stumbling across
+the historic vessel while surveying the seabed near Mazara del
+Vallo.</p>
+<p>He wrote on social media that he had decided to dive and investigate
+after seeing something that appeared to be a large rock on his
+scanner.</p>
+<p>“I get closer. And my heart stops. It wasn’t a rock,” he said.
+Instead, he saw hundreds of amphorae — tall ceramic jars used to store
+goods in the ancient era, mostly wine, oil or grain.</p>
+<p>“This is, without a doubt, the most incredible discovery of my life,”
+he said. “It’s hard to describe what it feels like to be among the first
+humans, in nearly 20 centuries, to see that place again.”</p>
+<p><img role="img" aria-label="A diver in full scuba gear on the edge of a small boat in the sea" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-20_2026-09-20_Day1_BBC罗马沉船_2.jpg" alt="A diver in full scuba gear on the edge of a small boat in the sea" />
+<em>Carabinieri via AFP: A diver in full scuba gear on the edge of a
+small boat in the sea</em></p>
+<p>He posted a video of the wreck, showing eels, snappers and “countless
+marine life” living among the jars, noting: “The sea never ceases to
+amaze us. This time we didn’t just find a wreck, we found a piece of our
+history.”</p>
+<p>Specialist divers from the cultural heritage protection arm of
+Italy’s police, known as the Carabinieri Art Squad, were sent to the
+site.</p>
+<p>Officials say safety measures will be taken to safeguard it while it
+undergoes investigation, as experts work to determine the nature of the
+wreck and learn more about its cargo.</p>
+<p>The Mediterranean seabed is thought to be scattered with similar
+ancient wrecks. Another 1st or 2nd Century BC vessel was found
+north-west of Rome in 2023, again laden with hundreds of amphorae.</p>
+<p>In 2018, a Greek merchant ship dating back more than 2,400 years was
+found lying on its side off the Bulgarian coast. At the time, it was
+hailed as the world’s oldest-known intact shipwreck.</p>
+<hr />
+<h2 id="生词标注都是雅思新闻高频">生词标注（都是雅思/新闻高频）</h2>
+<table>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shipwreck</td>
+<td>n.</td>
+<td>沉船；船难</td>
+<td>wreck = 残骸</td>
+</tr>
+<tr>
+<td>wreckage</td>
+<td>n.</td>
+<td>（船/飞机）残骸</td>
+<td></td>
+</tr>
+<tr>
+<td>vessel</td>
+<td>n.</td>
+<td>船只</td>
+<td>正式词 = ship</td>
+</tr>
+<tr>
+<td>amphora (复数 amphorae)</td>
+<td>n.</td>
+<td>双耳陶罐</td>
+<td>古希腊罗马储酒、油、粮用</td>
+</tr>
+<tr>
+<td>hail</td>
+<td>v.</td>
+<td>把……誉为、盛赞</td>
+<td>hailed as 被誉为</td>
+</tr>
+<tr>
+<td>tip-off</td>
+<td>n.</td>
+<td>线报、举报</td>
+<td>口语色彩，新闻爱用</td>
+</tr>
+<tr>
+<td>free-diver</td>
+<td>n.</td>
+<td>自由潜水者</td>
+<td>不带氧气瓶</td>
+</tr>
+<tr>
+<td>seabed</td>
+<td>n.</td>
+<td>海床</td>
+<td></td>
+</tr>
+<tr>
+<td>survey</td>
+<td>v.</td>
+<td>勘测、勘察</td>
+<td>名词是”调查/民意测验”</td>
+</tr>
+<tr>
+<td>stumble across</td>
+<td>短语</td>
+<td>偶然发现</td>
+<td>不是摔倒</td>
+</tr>
+<tr>
+<td>laden</td>
+<td>adj.</td>
+<td>满载的</td>
+<td>load 的形容词形式</td>
+</tr>
+<tr>
+<td>scatter</td>
+<td>v.</td>
+<td>散布、散落</td>
+<td>be scattered with 遍布</td>
+</tr>
+<tr>
+<td>safeguard</td>
+<td>v.</td>
+<td>保护</td>
+<td>比 protect 正式</td>
+</tr>
+<tr>
+<td>undergo</td>
+<td>v.</td>
+<td>经历、经受</td>
+<td>undergo investigation 接受调查</td>
+</tr>
+<tr>
+<td>cease</td>
+<td>v.</td>
+<td>停止</td>
+<td>never ceases to = 总能……</td>
+</tr>
+<tr>
+<td>intact</td>
+<td>adj.</td>
+<td>完好无损的</td>
+<td>考古类高频词</td>
+</tr>
+<tr>
+<td>cargo</td>
+<td>n.</td>
+<td>货物</td>
+<td>船上/飞机上的货</td>
+</tr>
+<tr>
+<td>marine life</td>
+<td>短语</td>
+<td>海洋生物</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
