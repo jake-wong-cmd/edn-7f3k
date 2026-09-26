@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="novelist-accused-of-using-ai-to-write-book-removed-from-french-prize-list">Novelist
+accused of using AI to write book removed from French prize list</h1>
+<p>Thélyson Orélien had been in the running to win a top literary prize
+before the AI claim emerged on social media</p>
+<p>25 September 2026</p>
+<p>Philip Oltermann, European culture editor</p>
+<p><img role="img" aria-label="The author Thélyson Orélien, whose book, C’était ça ou mourir, has sold about 35,000 copies." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-26_2026-09-26_Day5_卫报AI小说风波_1.jpg" alt="The author Thélyson Orélien, whose book, C’était ça ou mourir, has sold about 35,000 copies." />
+<em>The author Thélyson Orélien, whose book, C’était ça ou mourir, has
+sold about 35,000 copies. Photograph: Joel Saget/AFP/Getty
+Images</em></p>
+<p>The organisers of France’s most prestigious literary prize said they
+had removed a critically acclaimed novel by a Canadian-Haitian writer
+from the longlist after an anonymous online account claimed the book was
+“almost entirely” written by AI.</p>
+<p>The Académie Goncourt, a Paris-based literary organisation, said on
+Friday its decision to withdraw Thélyson Orélien’s novel C’était ça ou
+mourir (It Was That or Die) was “driven by the desire to preserve the
+integrity of the Goncourt prize and the academy itself, whose central
+role is to promote and honour literature written by women and men”.</p>
+<p>The Haiti-born author’s book is a lyrical first-person account of how
+a history and geography teacher flees a home country mired in gang
+violence and embarks on a perilous journey across 12 countries before
+finding a haven in Canada.</p>
+<p>Published in France by Grasset in August, it has sold about 35,000
+copies and won the Prix du roman Fnac, with translation rights sold to
+more than 20 countries.</p>
+<p><img role="img" aria-label="The novel on display inside a bookstore in Paris." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-26_2026-09-26_Day5_卫报AI小说风波_2.jpg" alt="The novel on display inside a bookstore in Paris." /> <em>The novel
+on display inside a bookstore in Paris. Photograph: Sarah
+Meyssonnier/Reuters</em></p>
+<p>Allegations that the book was written using AI emerged on X on 21
+September, the same day It Was That or Die won the Fnac prize for best
+novel.</p>
+<p>An anonymous account called Balance ton Claude – a reference to
+Anthropic’s AI agent – said it had fed the novel into the AI detection
+software Pangram and found it to be “almost entirely” written by
+artificial intelligence.</p>
+<p>Questions have been raised over Pangram’s accuracy, and French media
+outlets have found other AI detection programmes that identified It Was
+That or Die as very probably written by a human.</p>
+<p>Orélien, 38, has denied the allegation, saying it was racially
+motivated. “I’ve always loved creating and writing,” he said. “I don’t
+see why I would use a machine.”</p>
+<p>He told the newspaper Libération that he used traditional language
+and rhythms that were Haitian and Caribbean. “The imagery, repetition
+and rhythm are a living language, they are mine.”</p>
+<p>The author of the anonymous X account was later identified on the
+pages of the centre-right newspaper Le Figaro as one of its own
+columnists, Samuel Fitoussi, the author of an essay against “wokeism” on
+film and TV.</p>
+<p>On his own X account, Fitoussi said he had initiated his campaign
+because even though he was “techno-optimistic”, he feared that “AI will
+cause the disappearance of reading and writing”.</p>
+<p>On Wednesday Philippe Claudel, the Académie Goncourt’s president, had
+urged caution over the allegations. But separate accusations of
+plagiarism against Orélien published in French media appeared to have
+caused a change of heart.</p>
+<p>Libération alleged in an article that the author plagiarised an
+award-winning short story from the preface of the French journalist
+Louis Pauwels’ book The Morning of the Magicians, originally published
+in 1960.</p>
+<p>In its statement the academy referred to the “plagiarisms of which
+its author has been guilty over time and which have just been revealed,
+as well as the convergent result of several analyses by trustworthy
+researchers and journalists highlighting the fact that [the book] is in
+all likelihood very largely the product of artificial intelligence”.</p>
+<p>“The aim is to send a clear message,” it added, “to affirm that we
+neither endorse nor condone in any way the creation of texts generated
+with the help of AI.”</p>
+<p>In a statement shared with the Guardian, the novel’s original
+publisher, Le Éditions du Boréal, said: “Unfortunately, at this stage,
+we are unable to confirm or deny the allegations the author is
+facing.”</p>
+<p>The Canada-based publisher said it was important not tojump to
+conclusions, adding: “Without credible, concrete evidence, it is not our
+place to decide whether this book has a right to exist.”</p>
+<p>Boréal said it was “concerned” about the newer plagiarism
+allegations, but added it was important to remember there was a real
+person behind the book. “We unequivocally condemn the hateful messages
+and personal attacks of recent days, and we urge everyone to show
+restraint,” it said.</p>
+<p>Orélien has said he will not comment further on the latest
+allegations. Speaking on Thursday at Les Correspondances literary
+festival in Manosque, southern France, he said: “There’s this desire not
+only to attack the book, but especially my voice … to silence me,”
+adding that he would therefore “take a step back and wait until things
+have calmed down”.</p>
+<p>The Académie Goncourt will publish its shortlist on 6 October and
+announce the winner of the prize on 4 November.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in the running</td>
+<td>短语</td>
+<td>有望当选、参与角逐</td>
+<td>had been in the running to win… 有望拿下……；源自赛马用语</td>
+</tr>
+<tr>
+<td>longlist</td>
+<td>n.</td>
+<td>初选名单、长名单</td>
+<td>removed from the longlist 被移出长名单；对照 shortlist 决选名单</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>v.</td>
+<td>收回、撤销</td>
+<td>its decision to withdraw the novel 撤下小说；另义“取款、撤退”</td>
+</tr>
+<tr>
+<td>integrity</td>
+<td>n.</td>
+<td>公正、廉正；（事物）完整性</td>
+<td>preserve the integrity of the prize
+维护奖项的公正；另义“完整无缺”</td>
+</tr>
+<tr>
+<td>be driven by</td>
+<td>短语</td>
+<td>出于、源于</td>
+<td>was “driven by the desire to…”
+是出于……的考虑；被动式常用于说明动机</td>
+</tr>
+<tr>
+<td>mired in</td>
+<td>短语</td>
+<td>深陷（困境）的</td>
+<td>a home country mired in gang violence 深陷帮派暴力的祖国；mire
+本义“泥沼”</td>
+</tr>
+<tr>
+<td>haven</td>
+<td>n.</td>
+<td>避难所、安身之地</td>
+<td>finding a haven in Canada 在加拿大找到安身之所</td>
+</tr>
+<tr>
+<td>allegation</td>
+<td>n.</td>
+<td>（尚待证实的）指控、指称</td>
+<td>Allegations… emerged on X 指控在 X 平台出现；动词 allege“据称”</td>
+</tr>
+<tr>
+<td>feed … into</td>
+<td>短语</td>
+<td>把（数据）输入（系统）</td>
+<td>fed the novel into AI detection software 把小说“喂”给 AI
+检测软件</td>
+</tr>
+<tr>
+<td>raise questions over</td>
+<td>短语</td>
+<td>对……提出质疑</td>
+<td>Questions have been raised over Pangram’s accuracy
+对检测工具的准确性提出疑问</td>
+</tr>
+<tr>
+<td>deny</td>
+<td>v.</td>
+<td>否认</td>
+<td>has denied the allegation 否认指控；另义 deny sb sth“拒绝给予”</td>
+</tr>
+<tr>
+<td>centre-right</td>
+<td>adj.</td>
+<td>中右翼的</td>
+<td>the centre-right newspaper Le Figaro 中右翼报纸《费加罗报》</td>
+</tr>
+<tr>
+<td>columnist</td>
+<td>n.</td>
+<td>专栏作家</td>
+<td>one of its own columnists 该报自家专栏作者；column“专栏”</td>
+</tr>
+<tr>
+<td>urge caution</td>
+<td>短语</td>
+<td>呼吁审慎、劝人先别下结论</td>
+<td>had urged caution over the allegations 对指控呼吁慎重；urge sb to do
+sth</td>
+</tr>
+<tr>
+<td>plagiarism</td>
+<td>n.</td>
+<td>剽窃、抄袭</td>
+<td>accusations of plagiarism 抄袭指控；动词 plagiarise，行为人
+plagiarist</td>
+</tr>
+<tr>
+<td>endorse</td>
+<td>v.</td>
+<td>认可、赞同；（为商品）代言</td>
+<td>neither endorse nor condone
+既不认可也不容忍；第二义项常见于广告语境</td>
+</tr>
+<tr>
+<td>condone</td>
+<td>v.</td>
+<td>姑息、容忍（错误行为）</td>
+<td>同上句；比 tolerate 更强调“本应谴责却宽容”</td>
+</tr>
+<tr>
+<td>in all likelihood</td>
+<td>短语</td>
+<td>十有八九、极有可能</td>
+<td>is in all likelihood… largely the product of AI 极大概率是 AI
+的产物</td>
+</tr>
+<tr>
+<td>take a step back</td>
+<td>短语</td>
+<td>退一步、暂时抽身</td>
+<td>take a step back and wait until things have calmed down
+先退一步、等事态平息</td>
+</tr>
+<tr>
+<td>shortlist</td>
+<td>n.</td>
+<td>决选名单、入围名单</td>
+<td>publish its shortlist on 6 October 10 月 6
+日公布决选名单；流程：longlist→shortlist→winner</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
