@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="librarys-first-edition-reveals-austens-early-fans">Library’s
+first edition reveals Austen’s early fans</h1>
+<p>26 September 2026</p>
+<p>Bea Swallow, West of England</p>
+<p><img role="img" aria-label="The title page of a first edition of Sense and Sensibility, kept inside a library at Longleat House" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-27_2026-09-27_Day6_BBC奥斯汀首版_1.jpg" alt="The title page of a first edition of Sense and Sensibility, kept inside a library at Longleat House" />
+<em>Longleat House: The book is evidence Austen’s novels were being read
+and collected by the country-house elite during her own lifetime, say
+historians</em></p>
+<p>A first edition of Jane Austen’s debut novel has shed light on the
+author’s connection with one of Britain’s historic country houses.</p>
+<p>The 1811 first edition of Sense and Sensibility is on the shelves at
+Longleat House in Wiltshire, with its title page still carrying the
+anonymous attribution “By A Lady”.</p>
+<p>It is thought to have been acquired by the 2nd Marquess of Bath
+around the time of its publication which historians say is evidence
+Austen was being read by the elite social class during her lifetime.</p>
+<p>Dr James Ford, curator of Longleat House, said the estate had “a
+wonderful group of early Jane Austen editions”, including Emma and Pride
+and Prejudice.</p>
+<p>Sense and Sensibility follows the Dashwood sisters after their
+father’s death leaves the family facing financial uncertainty. It
+follows the very different ways two young women navigate love, loss and
+society.</p>
+<p>Bound in green and brown leather with a gold title, the relatively
+unassuming volume is among thousands of books in the seven historic
+libraries at Longleat House.</p>
+<p>It is presumed Jane Austen signed her first novel “By a Lady” to
+maintain her anonymity.</p>
+<p>Writing novels for money or public fame was generally considered
+unfeminine and improper for women of the gentry class during the 18th
+and 19th centuries.</p>
+<p>Her identity as the author only became widely known after Austen’s
+death in 1817, when her brother Henry identified his sister in a
+biographical notice.</p>
+<p>The libraries at Longleat House contain a total collection of around
+44,000 historic books, including first editions of Emma and a second
+edition of Pride and Prejudice.</p>
+<p><img role="img" aria-label="A view of Longleat House on a sunny day" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-27_2026-09-27_Day6_BBC奥斯汀首版_2.jpg" alt="A view of Longleat House on a sunny day" />
+<em>Getty/Andrew_Harker: Longleat House has seven libraries containing a
+total collection of about 44,000 historic books</em></p>
+<p>The edition is evidence that during her lifetime, Austen’s books were
+being read and collected by the elite social class - the very social
+circle she depicted in her novels.</p>
+<p>“An invoice we discovered last year records the 2nd Marquess
+purchasing Mansfield Park shortly after it was published in May 1814,”
+Ford said.</p>
+<p>“He was also one of the first owners of Longleat to open his park
+gates and hall door to early tourists, rather like the country house
+visit Austen evokes when Elizabeth Bennet arrives at Pemberley in Pride
+and Prejudice.”</p>
+<p>The historic libraries and rare book collections at Longleat can be
+visited as part of its Libraries VIP Tour.</p>
+<p>A new adaptation of Sense and Sensibility arrives in UK cinemas on 25
+September.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shed light on</td>
+<td>短语</td>
+<td>揭示、使……更为人了解</td>
+<td>has shed light on the author’s connection with…
+揭开作者与庄园的渊源；新闻高频</td>
+</tr>
+<tr>
+<td>country house</td>
+<td>n.</td>
+<td>（英国）乡间大宅、贵族庄园</td>
+<td>文化负载词；文中另见 country-house elite 庄园精英</td>
+</tr>
+<tr>
+<td>title page</td>
+<td>n.</td>
+<td>扉页</td>
+<td>印有书名的第一页；版权页称 copyright page</td>
+</tr>
+<tr>
+<td>attribution</td>
+<td>n.</td>
+<td>署名、归属说明</td>
+<td>the anonymous attribution “By A Lady” 匿名署名；动词 attribute
+把……归于</td>
+</tr>
+<tr>
+<td>acquire</td>
+<td>v.</td>
+<td>购得、获得（藏品）</td>
+<td>收藏与博物馆语境高频；名词 acquisition 收购（的藏品）</td>
+</tr>
+<tr>
+<td>it is thought / it is presumed</td>
+<td>句型</td>
+<td>据信、据推定</td>
+<td>新闻避免把话说死的被动句式；后接不定式，如 it is thought to have
+been acquired</td>
+</tr>
+<tr>
+<td>publication</td>
+<td>n.</td>
+<td>出版、问世</td>
+<td>around the time of its publication 约在出版前后；另义“出版物”</td>
+</tr>
+<tr>
+<td>curator</td>
+<td>n.</td>
+<td>策展人、馆藏负责人</td>
+<td>curator of Longleat House 朗利特庄园的负责人</td>
+</tr>
+<tr>
+<td>estate</td>
+<td>n.</td>
+<td>庄园、地产</td>
+<td>此处指庄园产业，不是“遗产”；the estate had… 庄园藏有……</td>
+</tr>
+<tr>
+<td>navigate</td>
+<td>v.</td>
+<td>应对、驾驭（处境）</td>
+<td>navigate love, loss and society
+在爱情、失亲与社会中摸索；另义“导航”</td>
+</tr>
+<tr>
+<td>unassuming</td>
+<td>adj.</td>
+<td>不起眼的、朴实的</td>
+<td>the relatively unassuming volume 这本其貌不扬的书</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>n.</td>
+<td>（书的）一卷、一册</td>
+<td>此处指这本书；另义“音量；体积”</td>
+</tr>
+<tr>
+<td>gentry</td>
+<td>n.</td>
+<td>（英国的）乡绅阶层</td>
+<td>women of the gentry class
+乡绅阶层的女性；地位次于贵族、高于平民</td>
+</tr>
+<tr>
+<td>notice</td>
+<td>n.</td>
+<td>小传、短评</td>
+<td>a biographical notice 一篇生平小传；此处不是“通知、注意”</td>
+</tr>
+<tr>
+<td>the very + 名词</td>
+<td>短语</td>
+<td>正是……、恰恰是……</td>
+<td>the very social circle she depicted
+正是她笔下的那个社交圈；强调用法</td>
+</tr>
+<tr>
+<td>depict</td>
+<td>v.</td>
+<td>描绘、刻画</td>
+<td>文学与艺术作品中的描写；近义词 portray</td>
+</tr>
+<tr>
+<td>invoice</td>
+<td>n.</td>
+<td>发票、账单</td>
+<td>An invoice records the purchase 一张发票记下这笔购买</td>
+</tr>
+<tr>
+<td>rather like</td>
+<td>短语</td>
+<td>颇像、有点像</td>
+<td>为比较降调的软表达，比 like 含蓄</td>
+</tr>
+<tr>
+<td>evoke</td>
+<td>v.</td>
+<td>使人想起、唤起</td>
+<td>evokes the country house visit 让人想起小说里的庄园之行</td>
+</tr>
+<tr>
+<td>adaptation</td>
+<td>n.</td>
+<td>改编作品</td>
+<td>a new adaptation of the novel 新版影视改编；动词 adapt</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
