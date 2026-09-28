@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="oxford-lets-openai-train-its-ai-models-on-bodleian-library">Oxford
+lets OpenAI train its AI models on Bodleian Library</h1>
+<p>University staff voice concerns over reputational risk of partnering
+with company behind ChatGPT</p>
+<p>26 September 2026</p>
+<p>Ethan Penny and Dan Milmo</p>
+<p><img role="img" aria-label="The OpenAI logo displayed on a cell phone in front of an image generated by ChatGPT’s Dall-E text-to-image model" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-28_2026-09-28_Day7_卫报牛津博德利AI_1.jpg" alt="The OpenAI logo displayed on a cell phone in front of an image generated by ChatGPT’s Dall-E text-to-image model" />
+<em>OpenAI, the company behind ChatGPT, has been digitising material
+from Oxford’s Bodleian Library to populate its training set. Photograph:
+Michael Dwyer/AP</em></p>
+<p>The University of Oxford has allowed the company behind ChatGPT to
+train its AI models on historical texts from its Bodleian Library, as
+tech companies scour academic institutions for fresh data.</p>
+<p>The Bodleian material digitised by OpenAI has been used to “populate
+the OpenAI training set”, according to internal documents.</p>
+<p>Oxford announced a partnership with the company in March 2025, using
+OpenAI software to digitise texts from the university’s world-famous
+library, which it said would make the content more widely available for
+students and researchers.</p>
+<p>However, the announcement did not state the material would be used
+for training OpenAI’s models, which are trained to recognise patterns in
+words – and thus “learn” to write complete sentences and perform other
+cognitive tasks – by being fed vast amounts of data.</p>
+<p>An OpenAI spokesperson said the company was “proud” to ensure “the AI
+models of today preserve the world’s historical knowledge for the
+future”.</p>
+<p>“With more than a billion people using this technology in everyday
+life, it’s important it reflects different cultures, histories and
+perspectives,” they added.</p>
+<p>Meeting minutes at the University of Oxford, obtained via a freedom
+of information request, record concerns from staff, including members of
+the Bodleian governance committee, about the reputational risk of
+partnering with OpenAI and the effect on the university’s environmental
+commitments of striking a deal involving an energy-intensive
+technology.</p>
+<p>Booksellers have also reported a spate of orders for obscure titles
+such as a guide to agricultural implements in 18th-century Africa or
+biographies of 1950s car drivers. Secondhand bookshop owners have
+speculated that because the titles are unlikely to exist online in
+digitised form, they represent fresh data that can be consumed by the
+next generation of AI models.</p>
+<p>Scraped websites are increasingly saturated with AI-generated
+material, making them less useful for training models, and developers
+have turned to physical, often historical, book collections.</p>
+<p>OpenAI has struck similar agreements with US research libraries such
+as Boston Public Library, Caltech, MIT, and the University of Michigan
+under a project called NextGenAI. Oxford is the only UK member of the
+project.</p>
+<p>By June 2025, 125,000 images scanned from historical dissertations
+had been shared with OpenAI from the Bodleian collection, including PhD
+theses from European and American universities written in the 19th and
+20th centuries. Other texts scanned include a rare collection of 10,000
+16th-century “broadside ballads” containing song lyrics and musical
+notes that were once circulated on Tudor street corners. Staff have also
+discussed digitising of 18th-century Irish state papers, the private
+letters of Irish novelist Marie Edgeworth, and Dorothy Hodgkin’s
+penicillin notebooks.</p>
+<p>The OpenAI contract with Oxford also raises the prospect of the mass
+digitisation of the Bodleian’s collection consisting of 23m items. The
+minutes also discussed the creation of an “Ask the Bod” chatbot.</p>
+<p>A spokesperson for the University of Oxford said the amount of text
+being digitised was “modest in scale” and covered only out-of-copyright
+material. The Bodleian keeps the rights to the scans and will begin
+publishing them openly online within months, the spokesperson said.</p>
+<p>They rejected the suggestion that the machine-learning element had
+been hidden from the public and students. Digitisation was the
+university’s primary interest, said the spokesperson, but staff had been
+open that the project would also contribute training data.</p>
+<p>The Bodleian’s collections remain intact under the deal, unlike with
+secondhand book acquisitions elsewhere that are being pulped after
+scanning. Anthropic, OpenAI’s close rival, has spent tens of millions of
+dollars acquiring books and slicing off their spines so their contents
+can be scanned before having them pulped. Anthropic has said it does not
+buy and destroy rare and antiquarian books.</p>
+<p>A tech news site, 404 Media, also placed a tracking device inside a
+secondhand book order and traced it to an Amazon facility in the US,
+where the books were also dismantled and scanned.</p>
+<p>The Oxford spokesperson said: “The material digitised through the
+project with OpenAI is modest in scale, out of copyright, and OpenAI’s
+use of the material is not exclusive.</p>
+<p>“The Bodleian libraries also retain the rights to make the digitised
+material available themselves, and the library will begin to publish
+these materials openly online in the next few months, as we do with
+outputs from other digitisation partnerships.</p>
+<p>“The project will in fact allow the Bodleian to make the material
+more accessible to a wider number for people, who might otherwise have
+found it difficult to access.”</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scour</td>
+<td>v.</td>
+<td>四处搜寻、搜罗</td>
+<td>as tech companies scour academic institutions for fresh data
+科技公司四处搜罗学术机构的新数据；另义“擦洗”</td>
+</tr>
+<tr>
+<td>digitise</td>
+<td>v.</td>
+<td>使数字化</td>
+<td>material digitised by OpenAI 被 OpenAI 数字化的资料；名词
+digitisation，文中见 mass digitisation 大规模数字化</td>
+</tr>
+<tr>
+<td>populate</td>
+<td>v.</td>
+<td>填充、灌入（数据集）</td>
+<td>“populate the OpenAI training set” 填充 OpenAI
+训练集；本义“居住于、移民于”</td>
+</tr>
+<tr>
+<td>strike (struck)</td>
+<td>v.</td>
+<td>达成（协议、交易）</td>
+<td>struck similar agreements with US libraries
+与美国多家图书馆达成类似协议；另义“罢工、打击”</td>
+</tr>
+<tr>
+<td>minutes</td>
+<td>n.</td>
+<td>会议纪要</td>
+<td>Meeting minutes record concerns… 会议纪要记下员工的担忧；单数 minute
+是“分钟”，勿混淆</td>
+</tr>
+<tr>
+<td>freedom of information request</td>
+<td>n.</td>
+<td>信息公开申请</td>
+<td>obtained via a freedom of information request
+经信息公开申请获得；英国有信息自由法案（FOI）</td>
+</tr>
+<tr>
+<td>reputational risk</td>
+<td>n.</td>
+<td>声誉风险</td>
+<td>the reputational risk of partnering with OpenAI 与 OpenAI
+合作的声誉风险</td>
+</tr>
+<tr>
+<td>energy-intensive</td>
+<td>adj.</td>
+<td>高耗能的</td>
+<td>an energy-intensive technology 高耗能技术；连字符复合形容词</td>
+</tr>
+<tr>
+<td>spate of</td>
+<td>短语</td>
+<td>一连串、接二连三的</td>
+<td>a spate of orders 一连串订单；新闻常用，指短时间内大量涌现</td>
+</tr>
+<tr>
+<td>obscure</td>
+<td>adj.</td>
+<td>冷僻的、无人问津的</td>
+<td>obscure titles 冷僻书目；反义 well-known</td>
+</tr>
+<tr>
+<td>scraped</td>
+<td>adj.</td>
+<td>抓取来的（网页）</td>
+<td>Scraped websites 被爬取的网站；动词 scrape 抓取数据</td>
+</tr>
+<tr>
+<td>saturated with</td>
+<td>短语</td>
+<td>充斥、饱和</td>
+<td>increasingly saturated with AI-generated material 越来越充斥着 AI
+生成内容</td>
+</tr>
+<tr>
+<td>prospect</td>
+<td>n.</td>
+<td>前景、可能性</td>
+<td>raises the prospect of mass digitisation 引出大规模数字化的可能</td>
+</tr>
+<tr>
+<td>out-of-copyright</td>
+<td>adj.</td>
+<td>版权期满的</td>
+<td>covered only out-of-copyright material 仅涉及版权期满的材料</td>
+</tr>
+<tr>
+<td>modest in scale</td>
+<td>短语</td>
+<td>规模有限、不大</td>
+<td>was “modest in scale”
+规模有限；报道中的降调说法——谁在说、替谁降调，值得留意</td>
+</tr>
+<tr>
+<td>intact</td>
+<td>adj.</td>
+<td>完好无损的</td>
+<td>collections remain intact 馆藏完好无损</td>
+</tr>
+<tr>
+<td>pulp</td>
+<td>v.</td>
+<td>化为纸浆、销毁</td>
+<td>being pulped after scanning 扫描后被打成纸浆；名词“纸浆”</td>
+</tr>
+<tr>
+<td>antiquarian</td>
+<td>adj.</td>
+<td>古籍的、文物级的</td>
+<td>rare and antiquarian books 珍本古籍</td>
+</tr>
+<tr>
+<td>retain</td>
+<td>v.</td>
+<td>保留、保有</td>
+<td>retain the rights to… 保有……的权利</td>
+</tr>
+<tr>
+<td>dismantle</td>
+<td>v.</td>
+<td>拆解、拆掉</td>
+<td>books were dismantled and scanned
+书被拆开扫描；也可指拆解制度、体系</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
