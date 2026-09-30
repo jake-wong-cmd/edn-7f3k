@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="greek-pm-urges-burnham-to-return-elgin-marbles-permanently">Greek PM
+urges Burnham to return Elgin Marbles permanently</h1>
+<p>24 September 2026</p>
+<p>Katie Razzall, Culture and media editor</p>
+<p><img role="img" aria-label="Some of the Parthenon sculptures in the British Museum. The sculptures are damaged, with some missing limbs and heads" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-30_2026-09-30_Day8_BBC帕特农雕塑_1.jpg" alt="Some of the Parthenon sculptures in the British Museum. The sculptures are damaged, with some missing limbs and heads" />
+<em>In Pictures via Getty Images: Some of the Parthenon sculptures in
+the British Museum. The sculptures are damaged, with some missing limbs
+and heads</em></p>
+<p><strong>The Greek prime minister has called on Andy Burnham to find
+the “political will” to send the Parthenon sculptures back to
+Greece.</strong></p>
+<p>Kyriakos Mitsotakis wrote in the Guardian that returning the
+classical treasures, also known as the Elgin Marbles in the UK, would
+“send a powerful signal” but would require “courage”.</p>
+<p>The sculptures have been on display in the British Museum since the
+19th Century, though Greece has long disputed the legality of their
+removal.</p>
+<p>Mitsotakis and his government have previously held talks with the
+British Museum about the sculptures, but the two have so far failed to
+reach an agreement, with Greek authorities seeking their permanent
+return.</p>
+<p>The Greek PM used the recent fanfare generated by the loan of the
+Bayeux Tapestry to the British Museum to restate his country’s claim to
+the Elgin Marbles.</p>
+<p>“Nobody would seriously contemplate cutting what survives of the
+tapestry in two and displaying half in London and half in Bayeux, and
+claiming this was an adequate way to understand it,” he wrote on
+Thursday.</p>
+<p>“Yet that is exactly what happened to the Parthenon sculptures.”</p>
+<p>His comments come after British Museum director Nicholas Cullinan
+suggested that the recent arrangement struck between the UK and France,
+after decades of rejected requests to borrow the medieval embroidery,
+offered hope of a deal with Greece over the Elgin Marbles.</p>
+<p>Mitsotakis said he was “surprised at the recent suggestion from the
+museum that the Bayeux Tapestry loan might provide a template for an
+agreement over the Parthenon sculptures”, adding: “I do not believe it
+does.”</p>
+<p>“Greece cannot accept any arrangement that would require it to
+recognise the British Museum’s ownership of the sculptures, or a scheme
+that would mean we ‘borrow’ parts of our own monument,” he wrote.</p>
+<p>Instead, he urged Burnham to stand by his previous comments on the
+sculptures and find a way of returning them for good.</p>
+<p>This would be a “decisive step”, Mitsotakis said, that would “reunite
+the sculptures and transform a historic dispute into a unique act of
+cultural friendship”.</p>
+<p>Back in 2023, several years before he returned to government and
+became prime minister, Burnham said the sculptures should be returned to
+Greece with “no strings attached”.</p>
+<p>For years, he supported a change in the law to allow for this. But
+last month, he told the Financial Times that “ultimately it’s an issue
+for the British Museum”, adding that “legally that’s where that issue
+rests”.</p>
+<p><img role="img" aria-label="The Parthenon in Athens. The ancient structure is on a hill above the wider city" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-09-30_2026-09-30_Day8_BBC帕特农雕塑_2.jpg" alt="The Parthenon in Athens. The ancient structure is on a hill above the wider city" />
+<em>Bloomberg via Getty Images: Many of the Elgin Marbles originate from
+the Parthenon in Athens</em></p>
+<p>British ambassador Lord Elgin was granted permission by the Ottoman
+Empire, the governing authority in Athens at the time, to remove some of
+the marble statues in the early 19th Century.</p>
+<p>They were created between 447BC and 432BC to decorate the Temple of
+Athena - what is now known as the Parthenon, in the Acropolis in
+Athens.</p>
+<p>After an 1816 parliamentary select committee deemed Elgin’s actions
+legal, the sculptures entered the British Museum collection by an act of
+Parliament.</p>
+<p>The Greeks dispute their removal was lawful and the demands to return
+the statues have been vocal.</p>
+<p>The Parthenon gallery in the Acropolis Museum in the Greek capital
+was deliberately designed with spaces left for the sculptures in the
+British Museum.</p>
+<p>Back in 2023, George Osborne, then the museum chair, told the BBC he
+was looking for a “more co-operative arrangement” after “quite a bitter
+disagreement” with the Greeks for more than 200 years.</p>
+<p>Mitsotakis’s latest comments appear to suggest a ramping up of
+rhetoric around the thorny issue once again.</p>
+<p>Last month, Greece’s health minister told Breitbart News he would
+like to see US President Donald Trump pressure the British to return the
+Parthenon pieces.</p>
+<p>The British Museum’s position - and that of the UK government - is
+that the law prevents the permanent return of items held in its
+collection, though loan agreements are common.</p>
+<p>Campaigners point out that the British Museum Act could be amended.
+However, the UK government has not signalled that this is a
+priority.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>urge</td>
+<td>v.</td>
+<td>敦促、力劝</td>
+<td>urged Burnham to stand by his previous comments
+敦促伯纳姆信守先前表态；名词 urge“冲动、强烈愿望”</td>
+</tr>
+<tr>
+<td>dispute</td>
+<td>v./n.</td>
+<td>对……提出异议；争端</td>
+<td>Greece has long disputed the legality of their removal
+希腊长期质疑移除的合法性；名词 a historic dispute 历史争端</td>
+</tr>
+<tr>
+<td>reach an agreement</td>
+<td>短语</td>
+<td>达成协议</td>
+<td>the two have so far failed to reach an agreement
+双方迄今未能达成一致；对照 strike a deal</td>
+</tr>
+<tr>
+<td>fanfare</td>
+<td>n.</td>
+<td>大张旗鼓的宣传、轰动</td>
+<td>the recent fanfare generated by the loan of the Bayeux Tapestry
+贝叶挂毯借展引发的轰动</td>
+</tr>
+<tr>
+<td>loan</td>
+<td>n.</td>
+<td>出借、借展（藏品）</td>
+<td>the loan of the Bayeux Tapestry 贝叶挂毯的借展；博物馆界用语，动词
+lend 借出</td>
+</tr>
+<tr>
+<td>contemplate</td>
+<td>v.</td>
+<td>设想、考虑</td>
+<td>Nobody would seriously contemplate cutting…
+没有人会当真考虑把……一分为二；多用于否定句</td>
+</tr>
+<tr>
+<td>arrangement</td>
+<td>n.</td>
+<td>安排、协议</td>
+<td>the recent arrangement struck between the UK and France
+英法之间最近达成的安排</td>
+</tr>
+<tr>
+<td>template</td>
+<td>n.</td>
+<td>范本、可循的先例</td>
+<td>might provide a template for an agreement
+或可成为达成协议的范本</td>
+</tr>
+<tr>
+<td>scheme</td>
+<td>n.</td>
+<td>方案、安排（英式用语）</td>
+<td>a scheme that would mean we “borrow” parts of our own monument
+那种要我们“借”回自家文物的方案；另义“阴谋”</td>
+</tr>
+<tr>
+<td>stand by</td>
+<td>短语</td>
+<td>坚持（立场、说过的话）</td>
+<td>stand by his previous comments 信守他先前的表态；另义“支持”</td>
+</tr>
+<tr>
+<td>for good</td>
+<td>短语</td>
+<td>永久地、一劳永逸</td>
+<td>find a way of returning them for good
+找到永久归还的办法；注意不是“为了好处”</td>
+</tr>
+<tr>
+<td>no strings attached</td>
+<td>短语</td>
+<td>不附带任何条件</td>
+<td>returned to Greece with “no strings attached” 无条件归还希腊</td>
+</tr>
+<tr>
+<td>deem</td>
+<td>v.</td>
+<td>认定、视为</td>
+<td>an 1816 parliamentary select committee deemed Elgin’s actions legal
+1816 年议会特别委员会认定埃尔金的行为合法</td>
+</tr>
+<tr>
+<td>vocal</td>
+<td>adj.</td>
+<td>大声疾呼的、直言不讳的</td>
+<td>the demands to return the statues have been vocal
+归还雕像的呼声一直强烈；本义“有声的”</td>
+</tr>
+<tr>
+<td>hold</td>
+<td>v.</td>
+<td>收藏、保有</td>
+<td>items held in its collection
+其馆藏所保存的文物；另义“握住、举行”</td>
+</tr>
+<tr>
+<td>rhetoric</td>
+<td>n.</td>
+<td>言论、话术、调门</td>
+<td>a ramping up of rhetoric around the thorny issue
+围绕这一棘手议题的言论升级</td>
+</tr>
+<tr>
+<td>thorny</td>
+<td>adj.</td>
+<td>棘手的</td>
+<td>the thorny issue 棘手的问题；本义“多刺的”</td>
+</tr>
+<tr>
+<td>amend</td>
+<td>v.</td>
+<td>修订（法律、条文）</td>
+<td>the British Museum Act could be amended
+《大英博物馆法》可以修订；名词 amendment 修正案</td>
+</tr>
+<tr>
+<td>position</td>
+<td>n.</td>
+<td>立场、态度</td>
+<td>The British Museum’s position … is that…
+大英博物馆的立场是……；另义“位置”</td>
+</tr>
+<tr>
+<td>signal</td>
+<td>v.</td>
+<td>表明、暗示</td>
+<td>has not signalled that this is a priority
+并未表明此事属于优先事项；名词“信号”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
