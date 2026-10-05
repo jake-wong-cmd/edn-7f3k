@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="swiss-glaciers-suffer-disastrous-year-of-ice-loss-threatening-water-supplies">Swiss
+glaciers suffer ‘disastrous’ year of ice loss, threatening water
+supplies</h1>
+<p>1 October 2026</p>
+<p>Mark Poynting, Climate reporter</p>
+<p><img role="img" aria-label="The front of a glacier, where a large channel - which looks a bit like a cave or an arch - has eaten away at the ice. A river of meltwater now meanders out of the front of the glacier. There are also chunks of ice on the ground having broken off the glacier. A man, dressed in mountaineering clothing, stands in front of the glacier for scale, which shows how big the channel or cave is." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-05_2026-10-05_Day10_BBC瑞士冰川_1.jpg" alt="The front of a glacier, where a large channel - which looks a bit like a cave or an arch - has eaten away at the ice. A river of meltwater now meanders out of the front of the glacier. There are also chunks of ice on the ground having broken off the glacier. A man, dressed in mountaineering clothing, stands in front of the glacier for scale, which shows how big the channel or cave is." />
+<em>L.Hösli: The front of Morteratsch Glacier in south-east Switzerland,
+which has been attacked by warm air and water</em></p>
+<p><strong>Swiss glaciers have suffered a near-record loss of ice in
+2026, new data shows, as intense summer heatwaves take their toll on
+Alpine peaks.</strong></p>
+<p>More than 5% of the country’s remaining glacier ice has disappeared
+in the last 12 months, which scientists say is “extraordinary”.</p>
+<p>They warn that such rapid melting is no longer a surprise given the
+pace of climate change, but it could threaten water supplies for
+farming, hydropower and transport in the decades ahead.</p>
+<p>The loss of glacier ice can also destabilise mountain slopes and
+increase the risk of landslides in some places - which can lead to flash
+flooding in extreme cases, as seen in Nepal in August.</p>
+<p>There were multiple factors involved in that event, which was
+triggered when a large area of bedrock and glacier ice collapsed.</p>
+<p>But scientists say long-term glacier thinning and the thawing of
+frozen ground likely raised the risks.</p>
+<p>The notable finding from this latest report is not so much that Swiss
+glaciers are shrinking - which is to be expected in our warming climate,
+driven primarily by fossil fuel emissions - but the sheer pace of
+melting.</p>
+<p>Until recently, glaciologists in the Alps considered 2% of ice lost
+in a single year to be “extreme”. This year has seen an estimated 5.5%
+disappear.</p>
+<p>“It’s really just disastrous,” said Dr Matthias Huss, director of
+Glacier Monitoring Switzerland, which produced the report.</p>
+<p>Swiss glaciers started the summer in an already difficult place,
+covered by less snow than usual after a mild winter.</p>
+<p>And much of that snow disappeared quickly in the early and intense
+heatwaves of May and June, exposing the glacier ice below.</p>
+<p>Bare ice is darker and less reflective than fresh snow, so absorbs
+more of the Sun’s energy.</p>
+<p>That left glaciers vulnerable to melting even faster in subsequent
+heatwaves.</p>
+<p>“Ten years ago, I wouldn’t have thought that it’s possible to lose
+glaciers so quickly,” said Dr Fabien Maussion, a glaciologist at the
+University of Bristol, who was not involved in the Swiss report.</p>
+<p>“What’s happened over the summer now is extremely distressing… but at
+the same time it was to be expected from a climate scientist’s
+perspective,” he added.</p>
+<p><img role="img" aria-label="Five images of Rhône Glacier, in each year from 2022 to 2026. The glacier flows from top to bottom of the image, with steep valley walls on either side. The glacier has noticeably retreated and thinned over this period. A lake covers where ice used to be." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-05_2026-10-05_Day10_BBC瑞士冰川_2.jpg" alt="Five images of Rhône Glacier, in each year from 2022 to 2026. The glacier flows from top to bottom of the image, with steep valley walls on either side. The glacier has noticeably retreated and thinned over this period. A lake covers where ice used to be." />
+<em>Five images of Rhône Glacier, in each year from 2022 to 2026. The
+glacier flows from top to bottom of the image, with steep valley walls
+on either side. The glacier has noticeably retreated and thinned over
+this period. A lake covers where ice used to be.</em></p>
+<p>Meltwater from glaciers can be an important source of water for
+irrigation, hydropower and even shipping traffic during hot, dry
+conditions.</p>
+<p>Scientists estimate that Swiss glaciers released 2.2 trillion litres
+of meltwater between July and September.</p>
+<p>Although that helped to ease water shortages this summer, it has
+rapidly diminished the frozen supply.</p>
+<p>The loss of ice could pose long-term challenges, Huss warned, with
+smaller glaciers unable to top up water levels to the same extent.</p>
+<p>“Every drop of water that runs off during these heatwaves is kind of
+old water that’s been stocked in the glacier ice centuries or decades
+ago,” said Huss.</p>
+<p>“It’s helping us [now] but it’s unsustainable, so we won’t have it at
+[our] disposal in the next heatwave.”</p>
+<p>The River Rhine reached record lows in places this summer, affecting
+shipping navigation routes and increasing transport costs.</p>
+<p>One of the most ominous findings is what researchers observed at
+measurement sites at the highest elevations, where temperatures are
+lowest and glaciers are typically snow-covered.</p>
+<p>Even as high as 3,500 metres above sea level, scientists found no
+snow remaining at the end of summer.</p>
+<p>“At some glaciers we’ve seen four metres of ice loss at the highest
+point, where they should be covered by several metres of winter snow at
+this time of the year,” said Huss, from Glacier Monitoring
+Switzerland.</p>
+<p>Snow is like glacier food - and under stable conditions some of it
+would eventually compact into ice.</p>
+<p>But if no snow survives the summer, it cannot replace the ice lost to
+melting at lower, warmer elevations. The glacier will starve, shrink and
+eventually disappear.</p>
+<p>“Glaciers are complex because they gain mass at the top and they flow
+downstream, so there is a lot of physics,” explained Maussion.</p>
+<p>“But in its simplest form, what we see right now is that we took an
+ice cube out of the fridge and it’s just melting in front of our
+eyes.”</p>
+<p>Scientists say the climate is now too warm for many Alpine glaciers
+to survive.</p>
+<p>Some, like Plattalva in eastern Switzerland, have already
+disappeared.</p>
+<p>But researchers stress that sharp cuts to carbon emissions can still
+save much of the world’s glacier ice.</p>
+<p>This is particularly the case for the Himalayas and the polar
+regions, where most of the planet’s ice resides.</p>
+<p>“There we still can make a big difference with protecting the
+climate,” said Huss.</p>
+<p>“If these ice masses can be saved or stabilised, we can limit the
+rise of global sea levels… which could affect billions of people living
+along the coast.”</p>
+<p><em>Additional reporting by Dominic Bailey</em></p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>take their toll</td>
+<td>短语</td>
+<td>造成损害、使付出代价</td>
+<td>heatwaves take their toll on Alpine peaks
+热浪对阿尔卑斯山峰造成损害；toll
+本义“通行费”，常见引申为“伤亡、损失”</td>
+</tr>
+<tr>
+<td>suffer</td>
+<td>v.</td>
+<td>遭受（损失、损害）</td>
+<td>suffered a near-record loss of ice
+冰量损失逼近历史最重；新闻高频：suffer losses / damage 遭受损失</td>
+</tr>
+<tr>
+<td>destabilise</td>
+<td>v.</td>
+<td>使不稳定、动摇</td>
+<td>can also destabilise mountain slopes 还可能使山坡失稳；stable →
+stabilise → destabilise</td>
+</tr>
+<tr>
+<td>bedrock</td>
+<td>n.</td>
+<td>基岩</td>
+<td>a large area of bedrock and glacier ice collapsed
+一大片基岩和冰川冰体崩塌</td>
+</tr>
+<tr>
+<td>thaw</td>
+<td>v./n.</td>
+<td>融化、解冻</td>
+<td>the thawing of frozen ground 冻土融化；另义（关系、气氛）缓和</td>
+</tr>
+<tr>
+<td>not so much … but …</td>
+<td>结构</td>
+<td>与其说……不如说……</td>
+<td>The notable finding … is not so much that Swiss glaciers are
+shrinking … but the sheer pace of melting
+关键发现与其说是冰川在缩小，不如说是缩小的速度；让步/强调结构</td>
+</tr>
+<tr>
+<td>notable</td>
+<td>adj.</td>
+<td>显著的、值得注意的</td>
+<td>the notable finding from this latest report
+这份最新报告里最值得注意的发现；动词 note 注意到</td>
+</tr>
+<tr>
+<td>sheer</td>
+<td>adj.</td>
+<td>纯粹的、单单是（表强调）</td>
+<td>the sheer pace of melting
+光是融化的速度本身；另义“（崖壁）陡峭的”</td>
+</tr>
+<tr>
+<td>glaciologist</td>
+<td>n.</td>
+<td>冰川学家</td>
+<td>a glaciologist at the University of Bristol
+布里斯托大学的冰川学家；glacier 冰川 + -ologist（cf. geologist）</td>
+</tr>
+<tr>
+<td>distressing</td>
+<td>adj.</td>
+<td>令人不安的、令人揪心的</td>
+<td>is extremely distressing 极其令人揪心；名词 distress 痛苦、危难</td>
+</tr>
+<tr>
+<td>meltwater</td>
+<td>n.</td>
+<td>融水</td>
+<td>released 2.2 trillion litres of meltwater 释放了 2.2
+万亿升融水；melt + water 复合词</td>
+</tr>
+<tr>
+<td>diminish</td>
+<td>v.</td>
+<td>使减少、消耗</td>
+<td>it has rapidly diminished the frozen supply
+迅速消耗掉封存的补给；另义“贬低”</td>
+</tr>
+<tr>
+<td>top up</td>
+<td>短语动词</td>
+<td>补充、填满</td>
+<td>unable to top up water levels 无力把水位补回来；名词 top-up
+充值</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>v.</td>
+<td>储存、储备</td>
+<td>water that’s been stocked in the glacier ice 封存在冰川里的水；名词
+stock 库存、存货</td>
+</tr>
+<tr>
+<td>at our disposal</td>
+<td>短语</td>
+<td>可供我们使用（支配）</td>
+<td>we won’t have it at [our] disposal
+下次热浪来袭时我们就没得用了；dispose of 处理掉</td>
+</tr>
+<tr>
+<td>ominous</td>
+<td>adj.</td>
+<td>不祥的、预示凶兆的</td>
+<td>one of the most ominous findings 最不祥的发现之一</td>
+</tr>
+<tr>
+<td>elevation</td>
+<td>n.</td>
+<td>海拔、高地</td>
+<td>measurement sites at the highest elevations 海拔最高的测量点；动词
+elevate 提升</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>v.</td>
+<td>压实、压紧</td>
+<td>some of it would eventually compact into ice
+一部分积雪最终压实成冰；形容词“紧凑的、小型的”</td>
+</tr>
+<tr>
+<td>starve</td>
+<td>v.</td>
+<td>（得不到补给而）消亡</td>
+<td>The glacier will starve, shrink and eventually disappear
+冰川会“断粮”、萎缩直至消失；本义“挨饿”</td>
+</tr>
+<tr>
+<td>reside</td>
+<td>v.</td>
+<td>存在于、驻留</td>
+<td>where most of the planet’s ice resides
+地球上大部分冰的所在；另义“居住”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
