@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="childrens-books-with-black-main-characters-down-8-in-a-year-study-shows">Children’s
+books with Black main characters down 8% in a year, study shows</h1>
+<p>Only 150 of 2,189 titles published in UK for young children last year
+focused on minority ethnic, disabled or neurodivergent characters</p>
+<p>5 October 2026</p>
+<p>Emma Loffhagen</p>
+<p><img role="img" aria-label="Two children read in a classroom" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-06_2026-10-06_Day11_卫报童书多样性_1.jpg" alt="Two children read in a classroom" /> <em>Just 47 of the 2,189 books
+published for under-10s in 2025 featured a Black main character,
+Photograph: MBI/Alamy</em></p>
+<p>The number of children’s books featuring Black main characters fell
+by almost 8% last year, according to research into diversity in UK
+publishing.</p>
+<p>Just 47 – or 2.1% – of the 2,189 books published for under-10s in
+2025 featured a Black main character, a 7.8% fall from the previous
+year, according to Inclusive Books for Children. Black children make up
+about 8.5% of that age bracket in England and Wales.</p>
+<p>Representation of south Asian main characters fell by 14.3 percentage
+points to 1.4%, despite children of south Asian heritage making up about
+12.4% of the population of under-10s. Just three books featured main
+characters of Middle Eastern and North African (MENA) heritage, down 50%
+from the previous year. This represented 0.1% of surveyed books,
+compared with the group’s 2.2% share of the population.</p>
+<p>The research by the literacy charity found that only 150 books – 6.9%
+of those surveyed – featured main characters from minority ethnic,
+disabled or neurodivergent backgrounds. Of these, 37.3% were written or
+illustrated by creators who did not share the background of their
+characters.</p>
+<p>The author Serena Patel said: “At an age when children are figuring
+out the world around them and where they fit in, it’s vital they have
+access to funny, inspiring, adventurous books that reflect both the
+lives they live and the ones they don’t. We must do better.”</p>
+<p>The report surveyed baby and toddler books, picture books and fiction
+for children aged up to nine. It found that representation of disabled
+characters in picture books fell sharply: the number with disabled main
+characters dropped by 60% in 2025, to just two titles. Neither was by a
+disabled creator.</p>
+<p>The survey also highlighted what it described as a lack of
+“incidental representation”: stories in which a main character’s
+identity does not explicitly drive the plot of the story.</p>
+<p>Dr Stella Louis, an early years consultant, trainer and author,
+pointed to this “continued reliance” on books where identity itself was
+the story. “Why can’t a child simply be south Asian, disabled,
+neurodivergent or bilingual and also be the hero of an ordinary story
+about friendship, adventure, loss or joy?” she said.</p>
+<p>The report found that all three books published in 2025 with MENA
+main characters were refugee narratives. The study authors said children
+of MENA heritage needed stories covering a broader range of themes and
+experiences.</p>
+<p>“As an Arab author, it is painful to see the number of children’s
+fiction books representing our region decline from six to only three in
+2025,” said Nadine Kaadan. She said the fact that all three books
+published were focused on refugee experiences risked reinforcing a
+“single story” about the region, defining it through “war and
+displacement rather than our rich cultures and heritage”.</p>
+<p>There were some signs of progress. Neurodivergent representation
+increased in picture books, from three titles in 2024 to 13 last year.
+In the baby and toddler category, the number of books with marginalised
+main characters rose by 29.4%.</p>
+<p>Jake Hope, a children’s book consultant, said: “When children’s
+enjoyment of reading is at a significant low, it’s more important than
+ever that the stories children encounter reflect their lives,
+identities, experiences and emotions.</p>
+<p>“These figures need to be more than mere statistics and a call to
+action for continued change and improvements.”</p>
+<p><em>This article was amended on 5 October 2026. In an earlier version
+Serena Patel was misidentified as Sheena Patel. This has been corrected,
+and an image of Sheena Patel removed. The first name of Jake Hope was
+also corrected.</em></p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>figures</td>
+<td>n.</td>
+<td>数据、数字</td>
+<td>“These figures need to be more than mere statistics”
+这些数字不能只是统计数字；figures
+也指“人物、身材”，新闻中作“数据”解极高频</td>
+</tr>
+<tr>
+<td>published</td>
+<td>v.</td>
+<td>出版；发布</td>
+<td>“the 2,189 books published for under-10s” 为十岁以下儿童出版的 2,189
+种书；报告、数据“发布”也用 publish（第二义项）</td>
+</tr>
+<tr>
+<td>feature</td>
+<td>v.</td>
+<td>以……为主角；重点呈现</td>
+<td>“books featuring Black main characters” 以黑人儿童为主角的书；名词
+feature 另义“（报纸）特稿、专题”</td>
+</tr>
+<tr>
+<td>surveyed</td>
+<td>v.</td>
+<td>受访的、被调研的</td>
+<td>“6.9% of those surveyed” 受访书目中的 6.9%；survey
+作名词“调查、概览”</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>n.</td>
+<td>代表性、呈现</td>
+<td>“Representation of south Asian main characters fell”
+南亚裔主角的呈现比例下降；动词 represent</td>
+</tr>
+<tr>
+<td>fall</td>
+<td>n.</td>
+<td>下降、跌幅</td>
+<td>“a 7.8% fall from the previous year” 较上年下跌 7.8%；动词
+fall“落下、下跌”</td>
+</tr>
+<tr>
+<td>percentage points</td>
+<td>n.</td>
+<td>百分点</td>
+<td>“fell by 14.3 percentage points” 下降 14.3
+个百分点；百分点≠百分比（percent），比较数据时的易混点</td>
+</tr>
+<tr>
+<td>share</td>
+<td>n.</td>
+<td>占比、份额</td>
+<td>“the group’s 2.2% share of the population” 该群体占人口的
+2.2%；另义“股份、分享”</td>
+</tr>
+<tr>
+<td>decline</td>
+<td>v./n.</td>
+<td>减少、下降</td>
+<td>“decline from six to only three in 2025” 2025
+年从六种降至仅三种；另义“婉拒”</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>v.</td>
+<td>骤降、跌落</td>
+<td>“dropped by 60% in 2025, to just two titles” 2025 年骤降
+60%，仅剩两种；名词“下降、一滴”</td>
+</tr>
+<tr>
+<td>minority ethnic</td>
+<td>adj.</td>
+<td>少数族裔的</td>
+<td>“characters from minority ethnic, disabled or neurodivergent
+backgrounds” 少数族裔、残障或神经多样性背景的角色；英式常用名词 ethnic
+minority</td>
+</tr>
+<tr>
+<td>neurodivergent</td>
+<td>adj.</td>
+<td>神经多样性的（自闭症、ADHD 等）</td>
+<td>“Neurodivergent representation increased in picture books”
+绘本中的神经多样性呈现增加</td>
+</tr>
+<tr>
+<td>incidental</td>
+<td>adj.</td>
+<td>附带性的、非主线的</td>
+<td>“a lack of ‘incidental representation’”
+缺乏“顺带式呈现”（主角身份不刻意成为主题的写法）；incident 事件</td>
+</tr>
+<tr>
+<td>marginalised</td>
+<td>adj.</td>
+<td>被边缘化的</td>
+<td>“books with marginalised main characters rose by 29.4%”
+以边缘群体为主角的书增加 29.4%</td>
+</tr>
+<tr>
+<td>literacy</td>
+<td>n.</td>
+<td>读写能力、（阅读）推广</td>
+<td>“the literacy charity” 该阅读推广慈善机构；literate 识字的</td>
+</tr>
+<tr>
+<td>drive</td>
+<td>v.</td>
+<td>推动、驱动</td>
+<td>“identity does not explicitly drive the plot”
+身份并不直接推动情节；名词 driver“驱动因素”</td>
+</tr>
+<tr>
+<td>bracket</td>
+<td>n.</td>
+<td>（年龄）组、区间</td>
+<td>“that age bracket” 那个年龄组；另义“括号、支架”</td>
+</tr>
+<tr>
+<td>single story</td>
+<td>n.</td>
+<td>“单一故事”（以偏概全的刻板叙事）</td>
+<td>“risked reinforcing a ‘single story’ about the region”
+可能强化对该地区的单一叙事；语出 Chimamanda Ngozi Adichie 演讲 The
+Danger of a Single Story</td>
+</tr>
+<tr>
+<td>amended</td>
+<td>v.</td>
+<td>更正、修订</td>
+<td>“This article was amended on 5 October 2026” 本文于 2026 年 10 月 5
+日更正；名词 amendment 修正案，法律条文“修订”亦用此词</td>
+</tr>
+<tr>
+<td>call to action</td>
+<td>n.</td>
+<td>行动号召</td>
+<td>“a call to action for continued change and improvements”
+呼吁继续推动改变与改进；缩写 CTA</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
