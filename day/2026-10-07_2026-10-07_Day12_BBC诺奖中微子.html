@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="ghost-particles-from-space-telescope-wins-physics-nobel">‘Ghost
+particles’ from space telescope wins physics Nobel</h1>
+<p>6 October 2026</p>
+<p>Pallab Ghosh, Science correspondent</p>
+<p><img role="img" aria-label="A starry sky the Milky Way is seen through the middle, and the Northern Lights in green along the horizon. In the foreground is an observatory with a black building and stairs liking to a white column." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-07_2026-10-07_Day12_BBC诺奖中微子_1.jpg" alt="A starry sky the Milky Way is seen through the middle, and the Northern Lights in green along the horizon. In the foreground is an observatory with a black building and stairs liking to a white column." />
+<em>Yuya Makino/IceCube/NSF: Prof Francis Halzen won for “decisive
+contribution” to developing the IceCube Neutrino Observatory</em></p>
+<p><strong>Belgian-born physicist Prof Francis Halzen has won the Nobel
+Prize in Physics for his pioneering work on an observatory that detects
+particles from space, shedding light on the distant
+universe.</strong></p>
+<p>Halzen led the development of IceCube at the South Pole, which uses a
+cubic kilometre of Antarctic ice fitted with light sensors to detect
+particles called neutrinos. These carry information about violent,
+high-energy processes in the cosmos.</p>
+<p>The Royal Swedish Academy of Sciences said “his vision and scientific
+leadership have been fundamental for the IceCube Neutrino
+Observatory”.</p>
+<p>He first presented his vision for detecting neutrinos at the South
+Pole in 1988.</p>
+<p>Halzen, who is now a US citizen at the University of
+Wisconsin–Madison, told a news conference that he was surprised his idea
+worked so well.</p>
+<p>“I have to emphasise how lucky I was. Because when we started this
+project, everybody realised this was maybe a good idea, but very few
+thought it would work, including myself.”</p>
+<p>Neutrinos are elusive subatomic particles. The Sun produces vast
+numbers of them: every second, billions pass harmlessly through an area
+the size of your fingernail.</p>
+<p>But IceCube is searching for much higher-energy neutrinos, those
+produced by violent processes far beyond our Solar System — in distant
+galaxies.</p>
+<p>It is composed of thousands of sensors on long cables that are
+drilled and frozen into a 1km cubic block of ice.</p>
+<p>Neutrinos can be thought of as astronomical messengers that point to
+those fundamental events.</p>
+<p>At the observatory, most neutrinos pass straight through the ice, but
+occasionally one interacts with it, producing particles that give off a
+telltale flash of light.</p>
+<p>These rare signals carry clues to where the neutrinos came from and
+the extreme conditions that produced them — allowing scientists to
+investigate places that ordinary telescopes cannot easily see.</p>
+<p>“Francis Halzen has led an international team of researchers and
+engineers who have provided us with a fantastic instrument,” said Prof
+Mark Pearce, Chair of the Nobel Committee for Physics.</p>
+<p>“His tenacity and scientific vision has paved the way for a new kind
+of astronomy.”</p>
+<p><img role="img" aria-label="A starry black sky with the Milky Way in blue running through the centre" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-07_2026-10-07_Day12_BBC诺奖中微子_2.jpg" alt="A starry black sky with the Milky Way in blue running through the centre" />
+<em>IceCube/NSF: This blurry image is of the Milky Way, but it is
+composed of neutrino particles</em></p>
+<p>On the rare occasions when a neutrino strikes an atomic nucleus, it
+produces fast-moving charged particles. It is these racing through the
+ice, which give off a blue glow, which sensitive light detectors can
+pick up.</p>
+<p>The pattern and timing of that light allow scientists to estimate the
+direction the neutrino came from — helping them trace its origins in the
+cosmos. But these interactions are so rare that the observatory needed
+an enormous volume of clear ice.</p>
+<p>Halzen’s idea was to use a vast natural ice sheet in Antarctica. So
+began an audacious plan to build a neutrino observatory at the
+geographic South Pole, with thousands of light sensors embedded deep in
+the ice.</p>
+<p>The neutrino’s ghostly nature, the very thing that makes it so hard
+to detect, also makes it a powerful messenger from the distant
+Universe.</p>
+<p>Neutrinos rarely interact with material in its way, so they can go
+right through dense regions that light cannot easily penetrate.</p>
+<p>And because they have no electric charge, magnetic fields do not bend
+their paths through space. That means their direction of arrival can
+point scientists back towards their source.</p>
+<p>Their energies carry further insight into the processes that created
+them - helping scientists investigate how exploding stars and the
+environments around giant black holes accelerate particles to
+extraordinary energies.</p>
+<p>Louis Barson, director of science at the Institute of Physics in
+London, said the IceCube Observatory had enabled astronomers to
+investigate phenomena that conventional telescopes cannot see.</p>
+<p>“The discoveries that have followed are helping us understand some of
+the most energetic and mysterious processes in the universe - and that’s
+thanks to Professor Halzen’s work,” he added.</p>
+<p>Prof Subir Sarkar, physicist from the University of Oxford, quoted
+the French novelist Marcel Proust in describing his assessment of
+Halzen’s contribution to science:</p>
+<p>“‘The only true voyage of discovery, the only fountain of Eternal
+Youth, would be not to visit strange lands but to possess other eyes, to
+behold the universe through the eyes of another, of a hundred others, to
+behold the hundred universes that each of them beholds, that each of
+them is’.</p>
+<p>“Francis Halzen has led the IceCube collaboration on just such a
+voyage of discovery and opened a new window on to our Universe”.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wins</td>
+<td>v.</td>
+<td>赢得、获得（奖项）</td>
+<td>“wins physics Nobel” 获得诺贝尔物理学奖；正文作 has
+won；获奖、夺冠、胜选均用 win，标题省略冠词</td>
+</tr>
+<tr>
+<td>pioneering</td>
+<td>adj.</td>
+<td>开创性的、先驱的</td>
+<td>“his pioneering work on an observatory”
+他在观测站上的开创性工作；动词 pioneer 开辟、倡导</td>
+</tr>
+<tr>
+<td>observatory</td>
+<td>n.</td>
+<td>天文台、观测站</td>
+<td>“the IceCube Neutrino Observatory” 冰立方中微子观测站；observe
+观测</td>
+</tr>
+<tr>
+<td>detect</td>
+<td>v.</td>
+<td>探测、检测到</td>
+<td>“an observatory that detects particles from space”
+探测来自太空粒子的观测站；名词 detection 探测</td>
+</tr>
+<tr>
+<td>neutrino</td>
+<td>n.</td>
+<td>中微子</td>
+<td>“particles called neutrinos” 被称为中微子的粒子；标题 ghost
+particles（幽灵粒子）即指它</td>
+</tr>
+<tr>
+<td>elusive</td>
+<td>adj.</td>
+<td>难以捉摸的、难以捕捉的</td>
+<td>“Neutrinos are elusive subatomic particles”
+中微子是难以捕捉的亚原子粒子；动词 elude 躲开、使……无法得到</td>
+</tr>
+<tr>
+<td>shed light on</td>
+<td>phr.</td>
+<td>揭示、使……得以了解</td>
+<td>“shedding light on the distant universe”
+揭示遥远宇宙的奥秘；新闻高频短语，≈ help explain</td>
+</tr>
+<tr>
+<td>decisive</td>
+<td>adj.</td>
+<td>决定性的</td>
+<td>“decisive contribution” 决定性贡献；动词 decide 决定，decision
+决定（名词）</td>
+</tr>
+<tr>
+<td>tenacity</td>
+<td>n.</td>
+<td>坚韧不拔、执着</td>
+<td>“His tenacity and scientific vision” 他的坚韧与科学远见；形容词
+tenacious</td>
+</tr>
+<tr>
+<td>pave the way</td>
+<td>phr.</td>
+<td>为……铺平道路、奠定基础</td>
+<td>“paved the way for a new kind of astronomy”
+为一种新的天文学奠定基础</td>
+</tr>
+<tr>
+<td>audacious</td>
+<td>adj.</td>
+<td>大胆的、敢于冒险的</td>
+<td>“So began an audacious plan” 于是一项大胆的计划启动了；名词 audacity
+大胆</td>
+</tr>
+<tr>
+<td>embedded</td>
+<td>v.</td>
+<td>嵌入、深植</td>
+<td>“sensors embedded deep in the ice” 深嵌冰层中的传感器；原形
+embed</td>
+</tr>
+<tr>
+<td>telltale</td>
+<td>adj.</td>
+<td>泄露踪迹的、揭示真相的</td>
+<td>“a telltale flash of light” 一道泄露踪迹的闪光；telltale sign
+明显的迹象</td>
+</tr>
+<tr>
+<td>ghostly</td>
+<td>adj.</td>
+<td>幽灵般的</td>
+<td>“The neutrino’s ghostly nature” 中微子的“幽灵”特性；呼应标题 ghost
+particles</td>
+</tr>
+<tr>
+<td>penetrate</td>
+<td>v.</td>
+<td>穿透、渗入</td>
+<td>“regions that light cannot easily penetrate”
+光难以轻易穿透的区域；名词 penetration 穿透</td>
+</tr>
+<tr>
+<td>conventional</td>
+<td>adj.</td>
+<td>传统的、常规的</td>
+<td>“conventional telescopes cannot see” 传统望远镜看不到的；反义
+unconventional 非常规的</td>
+</tr>
+<tr>
+<td>strikes</td>
+<td>v.</td>
+<td>击中、撞击</td>
+<td>“when a neutrino strikes an atomic nucleus”
+当中微子撞上原子核时；另义“罢工、袭击”</td>
+</tr>
+<tr>
+<td>estimate</td>
+<td>v.</td>
+<td>估算、估计</td>
+<td>“allow scientists to estimate the direction”
+使科学家得以估算方向；名词 estimate 估算值（新闻高频第二义项）</td>
+</tr>
+<tr>
+<td>give off</td>
+<td>phr.</td>
+<td>发出（光、热、气味等）</td>
+<td>“give off a telltale flash of light” 发出泄露踪迹的闪光</td>
+</tr>
+<tr>
+<td>carry</td>
+<td>v.</td>
+<td>携带、传递；刊登</td>
+<td>“These carry information about violent, high-energy processes”
+它们携带着关于剧烈高能过程的信息；报纸“刊登”报道也用
+carry（第二义项）</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
