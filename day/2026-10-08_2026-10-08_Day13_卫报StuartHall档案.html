@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="thatcherism-via-the-walkman-stuart-halls-british-cultural-studies-preserved-online">Thatcherism
+via the Walkman: Stuart Hall’s British cultural studies preserved
+online</h1>
+<p>Project lead says it celebrates ‘incredible contributions’
+Jamaica-born sociologist made to Britain’s culture</p>
+<p>7 October 2026</p>
+<p>Chris Osuh</p>
+<p><img role="img" aria-label="Stuart Hall stands in shadow, a bright diagonal light beam crossing the wall beside him" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-08_2026-10-08_Day13_卫报StuartHall档案_1.jpg" alt="Stuart Hall stands in shadow, a bright diagonal light beam crossing the wall beside him" />
+<em>Stuart Hall in 2007. He used the Sony Walkman as a case study of how
+social, cultural and economic life can be expressed through a single
+technology. Photograph: Antonio Olmos/The Observer</em></p>
+<p>Whether it was Thatcherism, populism or the story of the Sony
+Walkman, Stuart Hall was a public intellectual famed for defining the
+times. Now a major digital archive of his previously unpublished papers,
+notebooks, recordings and videos has been launched.</p>
+<p>When the Jamaica-born sociologist and seminal figure in postwar Black
+British history died in 2014 aged 82, his obituary in the Guardian said
+he had been “among the first to identify key questions of the age”. Hall
+coined the term Thatcherism and in 1985 warned of the dangers of
+“authoritarian populism”.</p>
+<p>The University of Birmingham, where Hall developed the Centre for
+Contemporary Cultural Studies, has digitised and released more than
+3,100 items donated by his widow, the historian Catherine Hall.</p>
+<p>They include notebooks, index cards, his abandoned doctoral thesis
+and hours of previously inaccessible audio and video tracing the
+evolution of cultural studies, all within an interactive database.</p>
+<p><img role="img" aria-label="Handwritten notes by Stuart Hall" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-08_2026-10-08_Day13_卫报StuartHall档案_2.jpg" alt="Handwritten notes by Stuart Hall" /> <em>Hall’s notes, charting the
+development of cultural studies, have been preserved in the archive.
+Photograph: University of Birmingham</em></p>
+<p>Also released are his “Origins of the new left” lecture, notebooks on
+“race and moral panics”, and Encoding/Decoding Cybernetics, a research
+project exploring Hall’s impact on the architecture of large language
+models.</p>
+<p>In response to the era of artificial intelligence, and the questions
+it raises about culture, copyright and corporate power, the academics
+behind the Stuart Hall Archive Project have barred AI bots from
+accessing the data.</p>
+<p>The Cadbury Research Library, which has catalogued the original
+papers, has run the digital archive through a programme that “poisons
+the data” for bots.</p>
+<p>The project lead, Dr Rebecca Roach, working with Helen Fisher and Dr
+Katherine Parson, said they did not create the archive “just for AI to
+scrape” and commercialise. She said the platform was built to ensure “it
+doesn’t replicate the exploitation of people of colour and their
+cultural heritage that technology has historically enabled”.</p>
+<p>“One of the things that was really central to us developing the
+Stuart Hall digital site was to think about what can we learn from
+Hall’s ideas – and how can we apply that to our current moment with
+machine learning,” Roach said.</p>
+<p>Hall died before the AI era fully arrived, but he left a body of work
+with which to interpret it. His theory of representation – examining how
+media builds meaning through language, symbols and cultural codes –
+remains relevant amid concerns about algorithmic bias. Doing Cultural
+Studies, a textbook he co-authored, used the Walkman as a case study of
+how social, cultural and economic life could be expressed through a
+single technology.</p>
+<p>Roach said it was important to celebrate Black British intellectuals
+who had made “incredible contributions” to British culture, and noted
+that while scholars had sometimes been “a bit sniffy” about popular
+culture, Hall was at its forefront. She called him “a guiding figure for
+making the world better”.</p>
+<p>Alongside the archive, Roach has produced learning materials for
+primary schoolchildren, while the art collective Vivid Projects has made
+a zine called Dear Stuart.</p>
+<p>University of Birmingham students have created Walking with Hall, a
+virtual tour of campus landmarks, raising questions about what it meant
+for the academic to walk in the shadow of Joseph Chamberlain, the
+imperialist statesman who founded the university.</p>
+<p>Classically educated in Jamaica, Hall came to Britain in 1951 on a
+Rhodes scholarship to Oxford, became the founding editor of New Left
+Review, and worked as a supply teacher in Brixton before pursuing his
+academic career.</p>
+<p>He met Catherine on an anti-nuclear march in 1963; they moved to
+Birmingham, where their two children were born and where he made his
+university department a beacon for debate on media, race, politics,
+Marxism and critical theory.</p>
+<p>From 1997 to 2000 he served on the Runnymede Trust’s commission on
+the future of multi-ethnic Britain, going on to collaborate with young
+artists and film-makers, and in 2005 he was made a fellow of the British
+Academy.</p>
+<p>Calling the archive “an extraordinary resource”, Prof Daniel McNeil,
+the Stuart Hall interdisciplinary chair at Birmingham University, said
+Hall “transformed how we think about culture, identity, power and
+belonging”.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>archive</td>
+<td>n. / v.</td>
+<td>档案（库）；归档、存档</td>
+<td>“a major digital archive of his previously unpublished papers”
+一座大型数字档案库；动词义 to archive“存档”，数字时代高频</td>
+</tr>
+<tr>
+<td>launched</td>
+<td>v.</td>
+<td>推出、启动</td>
+<td>“has been launched” 已上线发布；launch
+第二义项为“发起、推出”（项目、产品、调查），另义“发射（火箭）”，新闻极高频</td>
+</tr>
+<tr>
+<td>seminal</td>
+<td>adj.</td>
+<td>奠基性的、影响深远的</td>
+<td>“seminal figure in postwar Black British history”
+战后英国黑人史的奠基性人物；学术高频词，义近 pioneering / landmark</td>
+</tr>
+<tr>
+<td>coined</td>
+<td>v.</td>
+<td>首创（新词、新说法）</td>
+<td>“Hall coined the term Thatcherism” 霍尔首创“撒切尔主义”一词；coin
+作名词是“硬币”，作动词第二义项为“造词”</td>
+</tr>
+<tr>
+<td>digitised</td>
+<td>v.</td>
+<td>数字化</td>
+<td>“has digitised and released more than 3,100 items” 已将 3,100
+多件资料数字化并公开；英式拼写 -ise（美式 digitized）</td>
+</tr>
+<tr>
+<td>widow</td>
+<td>n.</td>
+<td>遗孀、寡妇</td>
+<td>“donated by his widow, the historian Catherine Hall”
+由其遗孀、历史学家凯瑟琳·霍尔捐赠；同位语插入写法“his widow, the
+historian …”</td>
+</tr>
+<tr>
+<td>inaccessible</td>
+<td>adj.</td>
+<td>无法获取的、难以访问的</td>
+<td>“hours of previously inaccessible audio and video”
+此前无法听到、看到的音视频；in- 否定前缀 + accessible（可获得的）</td>
+</tr>
+<tr>
+<td>barred</td>
+<td>v.</td>
+<td>阻止、禁止（进入）</td>
+<td>“have barred AI bots from accessing the data” 禁止 AI
+机器人访问数据；bar sb from doing sth 结构；bar
+名词义“酒吧、棍、条”</td>
+</tr>
+<tr>
+<td>scrape</td>
+<td>v.</td>
+<td>（用程序）抓取、爬取（数据）</td>
+<td>“‘just for AI to scrape’” 供 AI 抓取数据；第二义项“剐蹭、刮落”，AI
+语境专指“爬取数据”</td>
+</tr>
+<tr>
+<td>commercialise</td>
+<td>v.</td>
+<td>商业化、牟利</td>
+<td>“‘just for AI to scrape’ and commercialise” 供 AI
+抓取并商业化；英式拼写 -ise，名词 commercialisation</td>
+</tr>
+<tr>
+<td>exploitation</td>
+<td>n.</td>
+<td>剥削、利用</td>
+<td>“the exploitation of people of colour and their cultural heritage”
+对有色人种及其文化遗产的剥削；exploit 兼“开发利用”与“剥削”两义</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>n.</td>
+<td>表征、再现</td>
+<td>“His theory of representation”
+霍尔的“表征”理论；文化研究核心术语，另义“代表、代理人”，学术写作高频</td>
+</tr>
+<tr>
+<td>amid</td>
+<td>prep.</td>
+<td>在……之中、伴随</td>
+<td>“remains relevant amid concerns about algorithmic bias”
+在对算法偏见的忧思中依然切题；新闻高频介词（= in the middle of）</td>
+</tr>
+<tr>
+<td>case study</td>
+<td>n.</td>
+<td>案例研究</td>
+<td>“used the Walkman as a case study”
+以随身听为案例；学术英语高频，注意搭配 as a case study of</td>
+</tr>
+<tr>
+<td>sniffy</td>
+<td>adj.</td>
+<td>轻蔑的、瞧不上的</td>
+<td>“scholars had sometimes been ‘a bit sniffy’ about popular culture”
+学者有时对流行文化“有点不屑”；口语色彩，带作者声音</td>
+</tr>
+<tr>
+<td>forefront</td>
+<td>n.</td>
+<td>最前列、前沿</td>
+<td>“Hall was at its forefront” 霍尔站在其最前沿；固定搭配 at/in the
+forefront of</td>
+</tr>
+<tr>
+<td>fellow</td>
+<td>n.</td>
+<td>（学会）院士、研究员</td>
+<td>“made a fellow of the British Academy”
+当选英国学术院院士；另义“家伙、同伴”，学术界为“研究员、院士”</td>
+</tr>
+<tr>
+<td>interdisciplinary</td>
+<td>adj.</td>
+<td>跨学科的</td>
+<td>“the Stuart Hall interdisciplinary chair”
+斯图亚特·霍尔跨学科讲席教授席位；inter-（之间）+ discipline（学科）</td>
+</tr>
+<tr>
+<td>algorithmic bias</td>
+<td>n.</td>
+<td>算法偏见</td>
+<td>“concerns about algorithmic bias” 对算法偏见的担忧；AI
+与数字人文文本高频词</td>
+</tr>
+<tr>
+<td>tracing</td>
+<td>v.</td>
+<td>追溯、勾勒</td>
+<td>“tracing the evolution of cultural studies”
+追溯文化研究的演变；trace 第二义项“追溯（渊源）”，另义“痕迹、追踪”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
