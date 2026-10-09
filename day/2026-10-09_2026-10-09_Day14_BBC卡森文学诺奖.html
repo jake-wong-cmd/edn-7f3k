@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="bold-and-inventive-canadian-poet-anne-carson-wins-nobel-literature-prize">‘Bold
+and inventive’ Canadian poet Anne Carson wins Nobel Literature
+Prize</h1>
+<p>8 October 2026</p>
+<p>Ian Youngs, Culture reporter</p>
+<p><img role="img" aria-label="Anne Carson headshot" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-09_2026-10-09_Day14_BBC卡森文学诺奖_1.jpg" alt="Anne Carson headshot" /> <em>Alamy</em></p>
+<p><strong>Canadian poet, essayist and translator Anne Carson has been
+awarded this year’s Nobel Prize in Literature.</strong></p>
+<p>Carson, 76, is celebrated for works that often cross the boundaries
+between poetry, fiction and scholarship.</p>
+<p>The Nobel Prize committee said they had selected her “for her bold
+and inventive oeuvre that, in playful dialogue with the classical
+tradition, has created new forms for contemporary literature”.</p>
+<p>Carson responded by joking that the judges were “crazy” for honouring
+her. “I think they’re all crazy… Well, you know, it’s crazy,” she told
+public broadcaster RUV in Iceland, where she is currently staying.</p>
+<p>The Nobel Prize is awarded for a lifetime’s body of work and is
+regarded as the most prestigious award in global literature, with the
+winner receiving 12 million Swedish kronor (£900,000, $1.2m).</p>
+<p>Ingrid Carlberg, permanent secretary of the Swedish Academy, said she
+had broken the news to Carson on the phone shortly before the public
+announcement.</p>
+<p>“She had time to tell me was that she is, for the moment, in Iceland,
+where she is listening to the wind,” Carlberg, said.</p>
+<p>“She was taken by surprise but very happy. I could hear that in her
+voice.”</p>
+<p><img role="img" aria-label="Anne Carson smiling against a brick wall" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-09_2026-10-09_Day14_BBC卡森文学诺奖_2.jpg" alt="Anne Carson smiling against a brick wall" /> <em>Getty Images: Anne
+Carson pictured in 1998</em></p>
+<p>Born in Toronto in 1950, Carson lives in Michigan and has also held
+Icelandic citizenship since 2022.</p>
+<p>Anders Olsson, chairman of the Swedish Academy’s Nobel committee for
+Literature, praised the way Carson has “broken away from lyrical poetry
+bound to the narrative self and inspired new forms of contemporary
+literature”.</p>
+<p>“This method of writing leads to playful and ironic works that move
+not only between classical and modern poetry but also between different
+genres and artforms,” he said.</p>
+<p>Canadian Prime Minister Mark Carney said Carson’s win was “an
+extraordinary achievement and a proud moment for Canada”.</p>
+<p>The writer’s works feature “wit, imagination, and a style entirely
+her own,” Carney wrote on social media.</p>
+<p>“She has brought ancient stories to new audiences and transformed the
+way we think about literature.”</p>
+<p>Carson’s notable works include The Glass Essay, Autobiography of Red:
+A Novel in Verse, Nox, Float and The Beauty of the Husband: A Fictional
+Essay in 29 Tangos.</p>
+<p>In 2019, her performance piece Norma Jeane Baker of Troy drew a line
+between famous beauties from different historical periouds - Helen of
+Troy and Marilyn Monroe.</p>
+<p>In 2021, she released The Trojan Women: A Comic, a graphic retelling
+of Euripides’ ancient story; and her translation of Elektra by Sophocles
+was staged starring Brie Larson in London last year.</p>
+<p>She has been a professor of classics for more than 30 years and her
+writing is often inspired by Greek literature.</p>
+<p>Her translations have often given a contemporary twist to ancient
+works.</p>
+<p>“Her collaborations with visual artists and choreographers and with
+opera and theatre directors demonstrate the freedom with which she
+relates to literary expectations and rule systems,” Olsson said.</p>
+<p>“It is this that lies behind the outstanding importance her work
+since the 1990s has had for the international art and literature
+scene.”</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oeuvre</td>
+<td>n.</td>
+<td>（作家、艺术家的）全部作品</td>
+<td>“her bold and inventive oeuvre”
+她大胆而富有创造力的全部作品；法语借词，文学评论高频，单复同形</td>
+</tr>
+<tr>
+<td>bold</td>
+<td>adj.</td>
+<td>大胆的、无畏的</td>
+<td>“Bold and inventive”（标题引语）；另义“粗体的”，如 bold type
+粗体字</td>
+</tr>
+<tr>
+<td>celebrated</td>
+<td>adj.</td>
+<td>闻名的、备受赞誉的</td>
+<td>“is celebrated for works that often cross the boundaries”
+因作品而闻名；be celebrated for 为第二义项，另义“庆祝”</td>
+</tr>
+<tr>
+<td>cross the boundaries</td>
+<td>phr.</td>
+<td>跨越界限</td>
+<td>“cross the boundaries between poetry, fiction and scholarship”
+横跨诗歌、小说与学术三个领域</td>
+</tr>
+<tr>
+<td>scholarship</td>
+<td>n.</td>
+<td>学术、学问</td>
+<td>“between poetry, fiction and scholarship”
+在诗歌、小说与学术之间；第二义项“奖学金”（美式用法）</td>
+</tr>
+<tr>
+<td>prestigious</td>
+<td>adj.</td>
+<td>有声望的、有威望的</td>
+<td>“the most prestigious award in global literature”
+全球文学界最负盛名的奖项；名词 prestige 声望</td>
+</tr>
+<tr>
+<td>broke the news</td>
+<td>phr.</td>
+<td>把（消息）第一个告诉某人</td>
+<td>“she had broken the news to Carson on the phone”
+她打电话把消息告诉了卡森；break the news (to sb)，broke 为 break
+过去式</td>
+</tr>
+<tr>
+<td>taken by surprise</td>
+<td>phr.</td>
+<td>感到意外</td>
+<td>“She was taken by surprise but very happy.”
+她感到意外，但非常高兴；take sb by surprise 使某人吃惊</td>
+</tr>
+<tr>
+<td>permanent secretary</td>
+<td>n.</td>
+<td>常务秘书、常任秘书</td>
+<td>“permanent secretary of the Swedish Academy”
+瑞典学院常务秘书；政府及国际机构高级文官职称</td>
+</tr>
+<tr>
+<td>bound to</td>
+<td>v.</td>
+<td>束缚于、受限于</td>
+<td>“lyrical poetry bound to the narrative self”
+束缚于叙事自我的抒情诗；bind（束缚）的过去分词</td>
+</tr>
+<tr>
+<td>narrative</td>
+<td>n. / adj.</td>
+<td>叙事；叙事的</td>
+<td>“the narrative self” 叙事性自我；文学研究与创作理论核心词</td>
+</tr>
+<tr>
+<td>ironic</td>
+<td>adj.</td>
+<td>反讽的</td>
+<td>“playful and ironic works” 戏谑而反讽的作品；名词 irony 反讽</td>
+</tr>
+<tr>
+<td>genres</td>
+<td>n.</td>
+<td>体裁、门类</td>
+<td>“between different genres and artforms”
+在不同体裁与艺术形式之间；文学分类核心词</td>
+</tr>
+<tr>
+<td>drew a line between</td>
+<td>phr.</td>
+<td>在……之间建立联系</td>
+<td>“drew a line between famous beauties”
+把不同时代的著名美人勾连起来；draw 第二义项“串联、划出脉络”</td>
+</tr>
+<tr>
+<td>retelling</td>
+<td>n.</td>
+<td>重述、重新演绎</td>
+<td>“a graphic retelling of Euripides’ ancient story”
+对欧里庇得斯古典故事的图像化重述；动词 retell</td>
+</tr>
+<tr>
+<td>released</td>
+<td>v.</td>
+<td>发行、出版（作品）</td>
+<td>“she released The Trojan Women: A Comic”
+她出版《特洛伊妇女：漫画版》；新闻高频第二义项，另义“释放”</td>
+</tr>
+<tr>
+<td>staged</td>
+<td>v.</td>
+<td>搬上舞台、上演</td>
+<td>“was staged starring Brie Larson” 上演，由布丽·拉尔森主演；stage
+名词“舞台”活用为动词“上演”</td>
+</tr>
+<tr>
+<td>classics</td>
+<td>n.</td>
+<td>古典学、古希腊罗马研究</td>
+<td>“a professor of classics for more than 30 years”
+任古典学教授三十余年；classic 复数另义“经典作品”</td>
+</tr>
+<tr>
+<td>feature</td>
+<td>v.</td>
+<td>以……为特色</td>
+<td>“works feature ‘wit, imagination, and a style entirely her own’”
+作品以机智、想象与独树一帜的风格见长；另义名词“特色、专题报道”</td>
+</tr>
+<tr>
+<td>twist</td>
+<td>n.</td>
+<td>转折、新意</td>
+<td>“given a contemporary twist to ancient works”
+为古代作品赋予当代新意；第二义项“变化、转折”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
