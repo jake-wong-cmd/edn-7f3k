@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="end-of-the-world-and-hard-boiled-wonderland-review-murakamis-marvel-brilliantly-brought-to-life">End
+of the World and Hard-Boiled Wonderland review – Murakami’s marvel
+brilliantly brought to life</h1>
+<p><strong>Barbican theatre, London</strong><br />
+With a dual narrative set in Tokyo and a world of dreams, Philippe
+Decouflé’s epic production is as bewitching as its balletic unicorns</p>
+<p>9 October 2026</p>
+<p>Arifa Akbar</p>
+<p><img role="img" aria-label="A man and a woman sit at a table with a large animal skull on it. Numerous other skulls are held behind them as if floating in the air" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-10_2026-10-10_Day15_卫报村上春树舞台剧_1.jpg" alt="A man and a woman sit at a table with a large animal skull on it. Numerous other skulls are held behind them as if floating in the air" />
+<em>Beautiful but dangerous … Kiita Komagine and Misato Morita in End of
+the World and Hard-Boiled Wonderland. Photograph: Tristram Kenton/The
+Guardian</em></p>
+<p>How to stage Haruki Murakami’s epic, dual-narrative novel without
+leaving the audience in a muddle? Director-choreographer Philippe
+Decouflé goes big, filling the enormous Barbican stage with a
+kaleidoscope of dream worlds for Ako Takahashi’s adaptation. It could
+have become a scramble of stories and inquiries into memory,
+technological advances in society and the imagination. Instead, it is
+turned into one long immaculate coup de théâtre.</p>
+<p>There are two versions of the protagonist, Watashi (Tatsuya Fujiwara)
+– one is in Tokyo, the other in a world comprising dreams. The city is
+noirish while the latter is beautiful but dangerous, with a complicated
+storyline involving the sundering of humans from their shadows, a walled
+city, roaming animals and a professor (Narushi Ikeda) who collects their
+skulls to channel past experiences through sound.</p>
+<p><img role="img" aria-label="A woman in pink and a man in a long blue overcoat stand behind some old looking industrial hardware" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-10_2026-10-10_Day15_卫报村上春树舞台剧_2.jpg" alt="A woman in pink and a man in a long blue overcoat stand behind some old looking industrial hardware" />
+<em>Rabbit hole of wonderlands … Miu Tomita plays Woman in Pink and
+Tatsuya Fujiwara is Watashi. Photograph: Tristram Kenton/The
+Guardian</em></p>
+<p>The professor’s 17-year-old granddaughter (Miu Tomita) accompanies
+Watashi in Tokyo and appears like a kitsch version of the prophetess who
+goes with Aeneas into the underworld. Watashi seeks escape, so he can be
+reunited with his shadow (Shuntaro Miyao), but is drawn to this strange
+world too and has a romance with a librarian (Misato Morita).</p>
+<p>Initially, it spirals into a rabbit hole of wonderlands, with kooky
+humour and references to western canonical and pop culture, as is
+Murakami’s way, from ancient myth to Lewis Carroll’s Alice and Luis
+Buñuel’s Un Chien Andalou. A playful set, designed by K Ishihara, shows
+its own theatrical construction with cheeky playfulness.</p>
+<p>The visual pyrotechnics suck you in, from big projections to the
+speed, flow and agility of dancing that gestures at anime. They bring
+forth Murakami’s many creatures, from underground “murks”, with
+porcupine spikes, who flip and cartwheel, to a herd of balletic
+unicorns.</p>
+<p>Decouflé’s choreography is unsurpassable in its elastic grace and
+athleticism without seeming circus-like. The aesthetics on the whole are
+so ravishing that it doesn’t matter if the story is not easy to grasp in
+the first half. At least not for some because, while Murakami fans will
+know that the unity of the story is to come, initiates to his work may
+be left punch-drunk and befuddled by the onslaught of worlds and
+images.</p>
+<p>It becomes clear after the interval that this is controlled and
+deliberate confusion, reflecting Watashi’s state of mind. The dance
+becomes imbued with feeling as Murakami’s world reveals its underlying
+themes of loneliness, grief, the fear of disappearing and of death.</p>
+<p>But the story of lost shadows, representing the “true” self, bears
+bigger socio-political echoes that feel contemporary, and even prescient
+(the book was published in 1985). This world looks like Neo’s in The
+Matrix, and its technology chimes with ideas in Naomi Klein’s book,
+Doppelganger: A Trip into the Mirror World. The sinister side of the
+perfectionism that this dream society has cultivated could be a comment
+on postwar Japan, or on our world of AI, real and fake selves, code and
+machine-constructed subjectivity.</p>
+<p>At almost three hours, it leaves you with the sense that you have
+been dreaming, collectively, about a world of dead animals, lost shadows
+and unfeeling humans, but also of unicorns, impossible beauty and an
+ocean-like imagination. It is both of our world, and other.</p>
+<p>At Barbican theatre, London until 11 October</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>epic</td>
+<td>adj. / n.</td>
+<td>史诗般的、宏大的；（长篇）史诗作品</td>
+<td>“Murakami’s epic, dual-narrative novel”
+村上那部史诗般的双线叙事小说；新闻中常形容“规模宏大”的事业或事件</td>
+</tr>
+<tr>
+<td>adaptation</td>
+<td>n.</td>
+<td>改编（作品）</td>
+<td>“Ako Takahashi’s adaptation” 高桥阿古的舞台改编；动词
+adapt（适应、改编），文艺新闻高频</td>
+</tr>
+<tr>
+<td>scramble</td>
+<td>n. / v.</td>
+<td>混乱的一团、杂乱的拼凑；（慌忙）争抢</td>
+<td>“could have become a scramble of stories”
+本可能沦为一堆故事的杂乱拼凑；第二义项“争抢”，如 a scramble for
+tickets</td>
+</tr>
+<tr>
+<td>immaculate</td>
+<td>adj.</td>
+<td>完美无瑕的、无可挑剔的</td>
+<td>“one long immaculate coup de théâtre”
+一场漫长而完美的舞台奇观；源自“无斑点、无瑕疵”，评论文字高频</td>
+</tr>
+<tr>
+<td>coup de théâtre</td>
+<td>n.（法语借词）</td>
+<td>（剧场式）妙招、出人意料的精彩一招</td>
+<td>“immaculate coup de théâtre”
+精妙绝伦的戏剧奇招；字面意为“剧院的击打”，文艺评论常用</td>
+</tr>
+<tr>
+<td>protagonist</td>
+<td>n.</td>
+<td>主人公、主角</td>
+<td>“two versions of the protagonist, Watashi”
+主人公“我”的两个版本；文学核心词，对立词 antagonist（对手）</td>
+</tr>
+<tr>
+<td>noirish</td>
+<td>adj.</td>
+<td>黑色电影风格的、阴郁低沉的</td>
+<td>“The city is noirish” 这座城带着黑色电影气质；源自 film
+noir（黑色电影）</td>
+</tr>
+<tr>
+<td>kitsch</td>
+<td>n. / adj.</td>
+<td>媚俗（作品）、俗艳的</td>
+<td>“a kitsch version of the prophetess”
+一个媚俗版的女先知；现代艺术与评论常用词</td>
+</tr>
+<tr>
+<td>canonical</td>
+<td>adj.</td>
+<td>经典的、被奉为正典的</td>
+<td>“western canonical and pop culture” 西方经典与流行文化；canon
+本义“教规、正典”，人文学科高频</td>
+</tr>
+<tr>
+<td>cheeky</td>
+<td>adj.</td>
+<td>俏皮的、嬉皮笑脸的（英式口语）</td>
+<td>“shows its own theatrical construction with cheeky playfulness”
+带几分俏皮地亮出自己的舞台机关；英式幽默常用</td>
+</tr>
+<tr>
+<td>pyrotechnics</td>
+<td>n.</td>
+<td>炫技、（视觉上的）华丽效果；烟花</td>
+<td>“The visual pyrotechnics suck you in”
+视觉特效炫目，让你沉浸其中；本义“烟火”，引申为“炫技”</td>
+</tr>
+<tr>
+<td>gesture at</td>
+<td>phr.</td>
+<td>指向、示意、点到</td>
+<td>“dancing that gestures at anime” 带有动画意味的舞动；gesture
+由“手势”引申为“示意、指向”</td>
+</tr>
+<tr>
+<td>ravishing</td>
+<td>adj.</td>
+<td>令人倾倒的、惊艳的</td>
+<td>“The aesthetics on the whole are so ravishing”
+整体美学令人目眩神迷；文学评论高频，语气强于 beautiful</td>
+</tr>
+<tr>
+<td>punch-drunk</td>
+<td>adj.</td>
+<td>晕头转向的、被打懵的</td>
+<td>“may be left punch-drunk and befuddled”
+可能被砸得晕头转向、不知所措；源自拳击“被打得神志恍惚”</td>
+</tr>
+<tr>
+<td>onslaught</td>
+<td>n.</td>
+<td>猛烈冲击、连续不断的攻势</td>
+<td>“the onslaught of worlds and images”
+世界与影像的轮番轰炸；新闻中常见 the onslaught of bad news</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>n.</td>
+<td>（英式）幕间休息；间隔</td>
+<td>“It becomes clear after the interval”
+幕间休息之后才明白；英式剧场用法，美式作 intermission</td>
+</tr>
+<tr>
+<td>imbued</td>
+<td>v.</td>
+<td>be imbued with 充满、浸染着</td>
+<td>“The dance becomes imbued with feeling” 舞蹈渐渐浸满情感；常用被动
+be imbued with</td>
+</tr>
+<tr>
+<td>prescient</td>
+<td>adj.</td>
+<td>有先见之明的、先于时代的</td>
+<td>“that feel contemporary, and even prescient”
+显得切合当下，甚至先于时代；名词 prescience（先见）</td>
+</tr>
+<tr>
+<td>chime with</td>
+<td>phr.</td>
+<td>与……呼应、契合</td>
+<td>“its technology chimes with ideas in Naomi Klein’s book”
+其中技术与娜奥米·克莱恩书中的观点相呼应；chime 本义“钟鸣”</td>
+</tr>
+<tr>
+<td>cultivated</td>
+<td>v.</td>
+<td>养成、培育（态度、习惯）</td>
+<td>“the perfectionism that this dream society has cultivated”
+这个梦境社会养成的完美主义；第二义项，另义“耕种”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
