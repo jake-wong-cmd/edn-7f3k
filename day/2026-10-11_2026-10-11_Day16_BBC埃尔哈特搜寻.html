@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="expedition-hopes-to-find-aviator-amelia-earharts-plane-on-remote-island">Expedition
+hopes to find aviator Amelia Earhart’s plane on remote island</h1>
+<p>10 October 2026</p>
+<p>Aleks Phillips</p>
+<p><img role="img" aria-label="Two men and a woman stand on the viewing deck of a vessel travelling through the Pacific Ocean." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-11_2026-10-11_Day16_BBC埃尔哈特搜寻_1.jpg" alt="Two men and a woman stand on the viewing deck of a vessel travelling through the Pacific Ocean." />
+<em>Purdue University: The research team departed Kiribati’s capital on
+Wednesday and hope to arrive at the suspected wreck site by
+Monday</em></p>
+<p><strong>A team of researchers are on their way to a remote island to
+inspect what they think could be the wreckage of famed aviator Amelia
+Earhart’s plane.</strong></p>
+<p>The group, from the US-based Archaeological Legacy Institute (ALI)
+and Purdue University, are expected to arrive at Nikumaroro Island in
+the Pacific Ocean by Monday in the hopes of solving the mystery of her
+disappearance.</p>
+<p>The American pioneer vanished while attempting to circumnavigate the
+globe in 1937, spawning decades of speculation on her fate.</p>
+<p>The team are aiming to find what has been called the Taraia Object,
+first spotted sitting on the edge of a lagoon off Nikumaroro in
+satellite imagery in 2020.</p>
+<p>Purdue University said the object had since been confirmed to have
+been visible in aerial photography of the area dating back to 1938.</p>
+<p>The researchers are currently roughly halfway through their journey
+to the remote atoll aboard the Marin Mainiku, a Kiribati National
+Shipping Line vessel.</p>
+<p>They departed the capital of Kiribati on Wednesday to begin the
+830-mile journey to Nikumaroro, which is also part of the multi-island
+country.</p>
+<p>When they eventually arrive, they will have to navigate through a
+narrow gap created in the atoll’s reef by the British in 1963 - the last
+time the island was inhabited.</p>
+<p>“Finding Amelia Earhart’s Electra aircraft would be the discovery of
+a lifetime,” Richard Pettigrew, head of the ALI and the expedition lead,
+said.</p>
+<p>Earhart had already successfully flown from California across South
+America, Africa and Asia in her Electra twin-engine plane when she
+arrived in Lae, Papua New Guinea on 2 July 1937.</p>
+<p>From there, she and her navigator Fred Noonan had planned to travel
+towards Hawaii and then finally back to California.</p>
+<p>But her plane vanished without a trace while trying to reach Howland
+Island, a remote, uninhabited coral island near Nikumaroro, to
+refuel.</p>
+<p>Earhart’s disappearance spawned numerous theories - from a simple
+crash due to fuel exhaustion to more elaborate claims of
+interference.</p>
+<p>The official explanation is that the plane suffered communication
+problems while the two struggled to find the island, and Earhart
+eventually crashed into the ocean when she ran out of fuel.</p>
+<p>While this version of events is largely accepted, no physical
+evidence has ever been recovered.</p>
+<p><img role="img" aria-label="Amelia Earhart sitting in the cockpit of an Electra airplane" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-11_2026-10-11_Day16_BBC埃尔哈特搜寻_2.jpg" alt="Amelia Earhart sitting in the cockpit of an Electra airplane" />
+<em>Getty Images: Amelia Earhart disappeared over the Pacific Ocean
+while piloting her Electra plane in 1937</em></p>
+<p>One theory is that Earhart unintentionally navigated to Nikumaroro,
+where she ditched her plane and died a castaway.</p>
+<p>Images of the so-called Taraia Object show what could be the remnants
+of a small aircraft sitting in shallow waters.</p>
+<p>But some - including rival explorers - have expressed scepticism that
+this could be a plane, let alone Earhart’s.</p>
+<p>Ric Gillespie, who specialises in recovering historic aircraft
+wrecks, told news agency Reuters that the object looked like a tree that
+had fallen from the atoll into the nearby water.</p>
+<p>“I’d love to find that airplane. It ain’t gonna happen,” he said.</p>
+<p>The researchers en route to the island credit Gillespie with
+previously finding evidence of a human presence on the atoll in the
+1930s and forensic analysis of skeletal remains found there in the 1940s
+they say lend credence to their theory.</p>
+<p>But Gillespie suspects Earhart’s plane had likely broken apart and
+its fragments carried into the depths of the Pacific long ago.</p>
+<p>Previous attempts to find her Electra have also come up short.</p>
+<p>In 2024, a group of researchers said they may have found it lying
+around 4,877m (16,000ft) below the surface near Howland Island through
+sonar imaging - but this was later confirmed to be a rock formation.</p>
+<p>Similarly, an expedition in 2019, conducted by the marine
+archaeologist who discovered the Titanic wreck, to investigate a
+photograph of what might have been a landing gear protruding from the
+water near Nikumaroro also failed to find anything.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wreckage</td>
+<td>n.</td>
+<td>（飞机、船只等的）残骸</td>
+<td>“the wreckage of famed aviator Amelia Earhart’s plane”
+埃尔哈特座机的残骸；不可数名词，空难与事故新闻高频</td>
+</tr>
+<tr>
+<td>aviator</td>
+<td>n.</td>
+<td>飞行员、飞行家（早期用语）</td>
+<td>“famed aviator Amelia Earhart” 著名飞行家埃尔哈特；现代新闻多作
+pilot，aviator 自带年代感</td>
+</tr>
+<tr>
+<td>circumnavigate</td>
+<td>v.</td>
+<td>环绕（地球）航行</td>
+<td>“attempting to circumnavigate the globe in 1937” 1937
+年试图环球飞行；circum-（环绕）+ navigate（航行），环球航行新闻常用</td>
+</tr>
+<tr>
+<td>spawned</td>
+<td>v.</td>
+<td>引发、催生（大量事物）</td>
+<td>“spawning decades of speculation on her fate”
+引发数十年的猜测；本义“产卵”，引申义常接
+speculation/theories/rumours，新闻高频</td>
+</tr>
+<tr>
+<td>speculation</td>
+<td>n.</td>
+<td>猜测、揣测</td>
+<td>“decades of speculation on her fate”
+对她下落长达数十年的猜测；另义“投机买卖”，财经新闻常见</td>
+</tr>
+<tr>
+<td>atoll</td>
+<td>n.</td>
+<td>环礁</td>
+<td>“the remote atoll” 偏远的环礁；同篇还有
+reef（礁）、lagoon（潟湖），太平洋地理词群</td>
+</tr>
+<tr>
+<td>lagoon</td>
+<td>n.</td>
+<td>潟湖、泻湖</td>
+<td>“on the edge of a lagoon off Nikumaroro”
+位于尼库马罗岛外的潟湖边缘</td>
+</tr>
+<tr>
+<td>navigated</td>
+<td>v.</td>
+<td>航行、导航（到某地）</td>
+<td>“unintentionally navigated to Nikumaroro”
+无意中航至尼库马罗岛；第二义项“（在复杂局面中）找到出路”，如 navigate
+the crisis</td>
+</tr>
+<tr>
+<td>remnants</td>
+<td>n.</td>
+<td>残余物、残迹</td>
+<td>“the remnants of a small aircraft”
+小型飞机的残迹；常用复数，也指残存的影响或痕迹</td>
+</tr>
+<tr>
+<td>scepticism</td>
+<td>n.</td>
+<td>怀疑、质疑</td>
+<td>“have expressed scepticism that this could be a plane”
+对那是否是一架飞机表示怀疑；英式拼写，美式作 skepticism</td>
+</tr>
+<tr>
+<td>let alone</td>
+<td>phr.</td>
+<td>更不用说、遑论</td>
+<td>“that this could be a plane, let alone Earhart’s”
+连那是不是飞机都存疑，更不用说是不是埃尔哈特的了；雅思阅读高频结构</td>
+</tr>
+<tr>
+<td>forensic</td>
+<td>adj.</td>
+<td>法医的、法证鉴定的</td>
+<td>“forensic analysis of skeletal remains”
+对骸骨的法证分析；第二义项“细致取证式的”，如 a forensic examination of
+the accounts</td>
+</tr>
+<tr>
+<td>lend credence to</td>
+<td>phr.</td>
+<td>为……提供佐证、增强可信度</td>
+<td>“lend credence to their theory” 为他们的理论提供佐证；credence
+名词“可信度”，反面用法 give little credence to</td>
+</tr>
+<tr>
+<td>come up short</td>
+<td>phr.</td>
+<td>未达目标、落空</td>
+<td>“Previous attempts to find her Electra have also come up short”
+此前寻找座机的努力也都无果；本义“（长度）不够”</td>
+</tr>
+<tr>
+<td>ditched</td>
+<td>v.</td>
+<td>（飞机）水上迫降</td>
+<td>“she ditched her plane and died a castaway”
+她让飞机迫降水面，最终死在荒岛上；本义“抛弃”，航空义为第二义项</td>
+</tr>
+<tr>
+<td>castaway</td>
+<td>n.</td>
+<td>荒岛漂流者、落难者</td>
+<td>“died a castaway” 以漂流者身份死去；源自 cast
+away（被抛弃），《鲁滨逊漂流记》式叙事常用</td>
+</tr>
+<tr>
+<td>fragments</td>
+<td>n.</td>
+<td>碎片、碎块</td>
+<td>“its fragments carried into the depths of the Pacific”
+飞机碎片被带入太平洋深处；也指“零散片段”</td>
+</tr>
+<tr>
+<td>refuel</td>
+<td>v.</td>
+<td>（给飞机等）加油、补给燃料</td>
+<td>“trying to reach Howland Island … to refuel”
+试图抵达豪兰岛加油；引申用法 refuel the debate（给争论再添燃料）</td>
+</tr>
+<tr>
+<td>protruding</td>
+<td>v.</td>
+<td>突出、伸出</td>
+<td>“a landing gear protruding from the water”
+露出水面的一只起落架；固定搭配 protrude from</td>
+</tr>
+<tr>
+<td>expedition</td>
+<td>n.</td>
+<td>考察队、探险（活动）</td>
+<td>“an expedition in 2019” 2019
+年的一次考察；新闻中也指大型远征、科考</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
