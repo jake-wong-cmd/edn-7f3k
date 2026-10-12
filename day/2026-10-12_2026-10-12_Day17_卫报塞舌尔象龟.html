@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="scientists-discover-180000-giant-tortoises-on-one-seychelles-island">Scientists
+discover 180,000 giant tortoises on one Seychelles island</h1>
+<p>Free-roaming Aldabra population far exceeds human population of
+Seychelles after decades-long recovery programme</p>
+<p>8 October 2026</p>
+<p>South West News Service</p>
+<p><img role="img" aria-label="Giant tortoises in the Seychelles" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-12_2026-10-12_Day17_卫报塞舌尔象龟_1.jpg" alt="Giant tortoises in the Seychelles" /> <em>Giant tortoise population
+thriving as survey discovers 180,000 on one island. Photograph: Dennis
+Hansen/SWNS</em></p>
+<p>A survey of the world’s largest free-roaming giant tortoise
+population has discovered that the once endangered species is
+thriving.</p>
+<p>A population of Aldabra giant tortoises lives on an island in
+Seychelles called Aldabra Atoll.</p>
+<p>The most recent survey, led by Seychelles Islands Foundation (SIF)
+and the University of Exeter, revealed there were approximately 180,000
+tortoises living on the island. This is the highest figure ever recorded
+for the species and far exceeds the human population of Seychelles.</p>
+<p>The new figure was obtained by a team who analysed five years of
+tortoise counts between 2018 and 2022. It is the first update since a
+widely cited figure of 100,000 tortoises from the late 1990s.</p>
+<p>Aldabra Atoll is one of only two places in the world where giant
+tortoises are found in the wild, with a much smaller population living
+in the Galápagos.</p>
+<p>Dr Frauke Fleischer-Dogley, the CEO of SIF, said: “More than 180,000
+giant tortoises roaming freely on our atoll is proof of what long-term
+commitment to conservation can achieve. This is wonderful news for
+Seychelles, for the world, and for everyone who has worked to protect
+Aldabra.”</p>
+<p><img role="img" aria-label="Giant tortoise on the beach" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-12_2026-10-12_Day17_卫报塞舌尔象龟_2.jpg" alt="Giant tortoise on the beach" /> <em>There are more giant tortoises
+on Aldabra Atoll than humans. Photograph: Avalon.red/Alamy</em></p>
+<p>The study, published in the scientific journal Ecology and Evolution,
+found that the population was relatively stable for this period, with a
+best estimate of almost 183,000 adult and sub-adult tortoises.</p>
+<p>In the 19th century, exploitation of the animals meant there were
+fewer than 1,000 Aldabra tortoises left on the island, but a recovery
+programme led to it becoming a strict nature reserve in 1981 and a
+Unesco site in 1982.</p>
+<p>Researchers are now saying it is one of the greatest conservation
+success stories of the Indian Ocean, with the new study confirming it.
+“Aldabra’s giant tortoise monitoring programme is one of the longest
+running in the region, but the atoll’s dense vegetation makes counting
+tortoises genuinely difficult in places,” said Dr Nancy Bunbury, one of
+the study’s co-authors.</p>
+<p>“By modelling what we didn’t see, as well as what we did, we’ve
+produced the most reliable baseline yet for this iconic Seychelles
+species, establishing a benchmark we can use to track the population for
+decades to come.”</p>
+<p>Despite the good news, the study’s authors say that vigilance is
+essential. Aldabra’s climate is changing, with longer and more frequent
+droughts predicted to reduce the shade and food available to tortoises,
+while rising sea levels threaten low-lying parts of the atoll.</p>
+<p>The study authors say invasive mammals remain a threat including
+feral cats and black rats that prey on tortoise eggs and hatchlings. The
+planned eradication of these remaining invasive mammals, the authors
+say, could lift the last barriers to further growth of the population
+and help it withstand future climate pressures.</p>
+<p>“These results are great news for the tortoises and testament to the
+fantastic work done in the field,” said Dr Dave Hudson, a postdoctoral
+research associate at the University of Exeter’s Cornwall campus.</p>
+<p>“But it’s important to remember that the numbers provide a baseline –
+not an endpoint.</p>
+<p>“Hopefully we have provided the conservation managers the evidence
+they need to track future change and act early as the tortoises face
+increasing pressures from climate change, drought and invasive
+species.”</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>figure</td>
+<td>n.</td>
+<td>数字、数据；（书中的）图表；人物</td>
+<td>“the highest figure ever recorded for the species”
+该物种有记录以来的最高数字；本义“人物、身影”，新闻中 figures
+常指统计数据，如 official figures 官方数据</td>
+</tr>
+<tr>
+<td>thriving</td>
+<td>v.</td>
+<td>兴旺、茁壮成长（thrive 的现在分词）</td>
+<td>“the once endangered species is thriving”
+这个一度濒危的物种如今生机勃勃；thrive on sth 表“靠……兴旺”</td>
+</tr>
+<tr>
+<td>survey</td>
+<td>n. / v.</td>
+<td>调查、普查；（实地）勘测</td>
+<td>“A survey of the world’s largest free-roaming giant tortoise
+population” 对全球最大野生巨龟种群的调查；动词另有“总体审视”义</td>
+</tr>
+<tr>
+<td>estimate</td>
+<td>n. / v.</td>
+<td>估计、估算值</td>
+<td>“with a best estimate of almost 183,000 adult and sub-adult
+tortoises” 最优估计为近 18.3 万只成体与亚成体（sub-adult
+亚成体）；科研报道常用 best/rough estimate</td>
+</tr>
+<tr>
+<td>counts</td>
+<td>n.</td>
+<td>计数、清点数字（count 的复数）</td>
+<td>“five years of tortoise counts between 2018 and 2022” 2018 至 2022
+年五年的象龟计数；另义“罪名、事项”，如 on all counts 在所有方面</td>
+</tr>
+<tr>
+<td>exploitation</td>
+<td>n.</td>
+<td>（对野生动物的）捕猎利用、开发；剥削</td>
+<td>“exploitation of the animals meant there were fewer than 1,000
+Aldabra tortoises left” 对它们的捕猎利用使岛上仅存不到 1000 只；动词
+exploit</td>
+</tr>
+<tr>
+<td>reserve</td>
+<td>n. / v.</td>
+<td>（自然）保护区；储备；预订</td>
+<td>“it becoming a strict nature reserve in 1981” 1981
+年它成为严格的自然保护区；第二义项“储备、保留”常见于 in reserve</td>
+</tr>
+<tr>
+<td>vigilance</td>
+<td>n.</td>
+<td>警惕、警觉</td>
+<td>“the study’s authors say that vigilance is essential”
+研究作者表示警惕不可或缺；形容词 vigilant，反义 complacency（自满）</td>
+</tr>
+<tr>
+<td>low-lying</td>
+<td>adj.</td>
+<td>低洼的、地势低的</td>
+<td>“rising sea levels threaten low-lying parts of the atoll”
+海平面上升威胁环礁的低洼地带；气候报道高频</td>
+</tr>
+<tr>
+<td>invasive</td>
+<td>adj.</td>
+<td>入侵性的、外来的（物种等）</td>
+<td>“invasive mammals remain a threat”
+外来入侵哺乳动物仍是威胁；生态学核心词，常搭 invasive species
+入侵物种</td>
+</tr>
+<tr>
+<td>feral</td>
+<td>adj.</td>
+<td>野化的、回归野性的</td>
+<td>“including feral cats and black rats”
+包括野化猫与黑鼠；指家养动物逃逸后野化，区别于原生野生 wild</td>
+</tr>
+<tr>
+<td>prey on</td>
+<td>phr.</td>
+<td>捕食、猎食</td>
+<td>“black rats that prey on tortoise eggs and hatchlings”
+捕食龟卵与幼龟的黑鼠；第二义项“使……受害、折磨”，如 prey on sb’s
+fears</td>
+</tr>
+<tr>
+<td>hatchlings</td>
+<td>n.</td>
+<td>刚孵化的幼崽、幼龟</td>
+<td>“tortoise eggs and hatchlings” 龟卵与幼龟；hatch（孵化）+
+-ling（幼小后缀）</td>
+</tr>
+<tr>
+<td>eradication</td>
+<td>n.</td>
+<td>根除、剿灭</td>
+<td>“The planned eradication of these remaining invasive mammals”
+计划根除这些残留的入侵哺乳动物；动词 eradicate，如 eradication of
+poverty 消除贫困</td>
+</tr>
+<tr>
+<td>withstand</td>
+<td>v.</td>
+<td>经受住、承受</td>
+<td>“help it withstand future climate pressures”
+帮助它承受未来的气候压力；常搭 withstand pressure / shocks</td>
+</tr>
+<tr>
+<td>testament</td>
+<td>n.</td>
+<td>明证、证明（a testament to sth）</td>
+<td>“testament to the fantastic work done in the field”
+是实地工作出色的明证；语气比 proof 更强调“见证、见证物”</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>n.</td>
+<td>基线、基准数据</td>
+<td>“the most reliable baseline yet for this iconic Seychelles species”
+该标志性物种迄今最可靠的基线数据；科研与统计高频</td>
+</tr>
+<tr>
+<td>benchmark</td>
+<td>n. / v.</td>
+<td>基准、标杆；以……为基准衡量</td>
+<td>“establishing a benchmark we can use to track the population”
+建立一个可用于长期跟踪种群的基准；比 baseline 更强调“比较用的标杆”</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td>n.</td>
+<td>终点；（研究的）终点指标</td>
+<td>“the numbers provide a baseline – not an endpoint”
+这些数字是基线，而非终点；医学试验中常见 primary endpoint 主要终点</td>
+</tr>
+<tr>
+<td>exceed</td>
+<td>v.</td>
+<td>超过、超出</td>
+<td>“far exceeds the human population of Seychelles”
+远超塞舌尔本国人口；报道数据对比高频，常搭 far / vastly exceed</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
