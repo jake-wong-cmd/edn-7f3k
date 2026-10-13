@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="student-who-spells-by-blinking-is-denied-chance-to-sit-exam">Student
+who spells by blinking is denied chance to sit exam</h1>
+<p>12 October 2026</p>
+<p>Lucy Adams, Scotland education and social affairs correspondent</p>
+<p><img role="img" aria-label="Close-up image of Romi with dark hair and a fringe, wearing a navy-and-white striped top, seated indoors." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-13_2026-10-13_Day18_BBC眨眼考生_1.jpg" alt="Close-up image of Romi with dark hair and a fringe, wearing a navy-and-white striped top, seated indoors." />
+<em>Romi says the exam system should adapt so that disabled students
+have a fair chance</em></p>
+<p><strong>It takes Romi Loffler about half an hour to write a sentence,
+spelling it out one letter at a time by blinking.</strong></p>
+<p>The 21-year-old, from Netherlee in East Renfrewshire, has Rett
+Syndrome, a genetic neurological disorder which leaves her unable to
+speak or move and comes with a range of health problems including
+epilepsy.</p>
+<p>For years, people with the condition were assumed to have profound
+learning disabilities but Romi, who uses special eye-gaze technology to
+communicate, is hoping to challenge that belief.</p>
+<p>After months of work, she completed the coursework for National 4
+(Nat 4) history and achieved a qualification last year.</p>
+<p>This year her aim was to go a step further and pass at Nat 5, which
+would require her sitting an exam.</p>
+<p>But her hopes have been dashed by Scotland’s exams body
+Qualifications Scotland (QS) which has rejected her family’s requests
+for the adjustments Romi would need.</p>
+<p><img role="img" aria-label="Romi sitting in a supportive wheelchair in a restaurant or café setting, wearing a dark graphic T-shirt." src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-13_2026-10-13_Day18_BBC眨眼考生_2.jpg" alt="Romi sitting in a supportive wheelchair in a restaurant or café setting, wearing a dark graphic T-shirt." />
+<em>Romi told the BBC she deserved the same chance as everyone
+else</em></p>
+<p>About 18 months before exam time, her college and parents began
+discussions with QS, asking if she could sit it one question at a time
+over a number of weeks or potentially months.</p>
+<p>This would mean her sitting a different exam paper to other Nat 5
+students but it would still be at the same level.</p>
+<p>Her parents also asked if she could use a “bank” of pre-agreed
+relevant words that would mean she would not have to spell out every
+letter.</p>
+<p>Qualifications Scotland (QS) said no despite two children using eye
+gaze technology to sit GCSE exams in England earlier this year.</p>
+<p>One, who has cerebral palsy, took five months to complete the
+exam.</p>
+<p>“If it can be done for GCSEs, I simply don’t understand why it can’t
+be done for Nat 5,” says Romi’s mum, Gael Gordon.</p>
+<p>Qualifications Scotland suggested Romi sit the exam all in one go,
+but her mum said that would be impossible because communicating using
+her eyes is so exhausting.</p>
+<p>Her mum said that QS had expressed concern that Romi would get an
+unfair advantage over other candidates.</p>
+<p>“I think she is starting from a position of such incredible
+disadvantage that just getting her to the starting line is incredibly
+difficult,” her mum said.</p>
+<p>“She is not wanting to be given it and given a pat on the head.</p>
+<p>“She wants to sit the exam in a way she can demonstrate everything
+she knows.</p>
+<p>“It is about proving her capacity and proving her worth and showing
+what she can do because if she gets that certificate no-one can take
+that away from her.”</p>
+<p>Romi took time to spell out for BBC Scotland News how she feels about
+not being able to sit the exam.</p>
+<p>“Angry,” she wrote.</p>
+<p>“Other students got the chance to get their National 5 and I didn’t.
+That was unfair. I deserved the same chance as everyone else.</p>
+<p>“They shouldn’t expect us to fit around their exam system. The exam
+system should adapt so that disabled students have a fair chance to show
+what they know.</p>
+<p>“People sometimes underestimate what I can do because I am disabled.
+A recognised qualification gives me evidence of what I can do.”</p>
+<p>Tracey Campbell, of Rett UK, said Romi had been dismissed in many
+areas of her life and she wanted to prove she was capable.</p>
+<p>“To have these extra barriers put in place is completely unfair and
+unjust,” she said.</p>
+<p>“What has been fabulous about exam boards in England is that people
+have been allowed to sit their exams over a long period of time, one
+question at a time.”</p>
+<p>Glasgow Clyde College, where Romi studies, said she is “highly
+capable and committed”.</p>
+<p>Claire Donaghey, assistant principal arts and continuing education,
+said: “Despite considerable discussion with Qualifications Scotland, the
+mitigating arrangements we have proposed have not been deemed compatible
+with these requirements.</p>
+<p>“We remain fully committed to supporting Romi and will continue to
+work constructively with her, her family and Qualifications Scotland to
+explore every available option and achieve the best possible outcome for
+her.”</p>
+<p>Qualifications Scotland said it was committed to making reasonable
+adjustments so that disabled learners have an equal opportunity to
+demonstrate their knowledge, skills and understanding.</p>
+<p>A spokesperson said: “This year over 39,000 learners benefited from
+assessment arrangements.</p>
+<p>“We also have a duty to maintain the integrity of qualifications, so
+must always ensure that any reasonable adjustments put in place for
+learners do not impact standards.”</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sit</td>
+<td>v.</td>
+<td>参加（考试）</td>
+<td>“denied chance to sit exam” 被拒绝参加考试；sit an exam/paper
+为英式固定说法，本义“坐”，新闻高频第二义项</td>
+</tr>
+<tr>
+<td>spell out</td>
+<td>phr.</td>
+<td>逐字母拼出；详细说明</td>
+<td>“spelling it out one letter at a time by blinking”
+靠眨眼一次拼一个字母；later “spell out for BBC Scotland how she feels”
+则是第二义项“详细讲明”</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>v.</td>
+<td>使（希望、梦想）破灭</td>
+<td>“her hopes have been dashed”
+她的希望落空；本义“猛冲、击碎”，被动语态常接 hopes/dreams</td>
+</tr>
+<tr>
+<td>assumed</td>
+<td>v.</td>
+<td>被认为、被假定</td>
+<td>“were assumed to have profound learning disabilities”
+曾被认为有重度学习障碍；被动式 assumed to have
+done，阅读时勿漏“过去曾如此认为”之意</td>
+</tr>
+<tr>
+<td>profound</td>
+<td>adj.</td>
+<td>严重的、深度的</td>
+<td>“profound learning disabilities”
+重度学习障碍；此处取医学义，非“深刻的、深奥的”</td>
+</tr>
+<tr>
+<td>adjustments</td>
+<td>n.</td>
+<td>（考试的）便利安排、调整</td>
+<td>“the adjustments Romi would need” 罗米所需的考试安排；“reasonable
+adjustments” 是英国残障权益核心术语，意为合理便利</td>
+</tr>
+<tr>
+<td>candidates</td>
+<td>n.</td>
+<td>考生；候选人</td>
+<td>“an unfair advantage over other candidates”
+相对其他考生的不公平优势；本义“候选人”，考试语境指考生</td>
+</tr>
+<tr>
+<td>exam paper</td>
+<td>n.</td>
+<td>试卷</td>
+<td>“a different exam paper to other Nat 5 students”
+与其他学生不同的试卷；paper 为多义词：报纸／论文／试卷</td>
+</tr>
+<tr>
+<td>bank</td>
+<td>n.</td>
+<td>储备库、一组备用内容</td>
+<td>“a ‘bank’ of pre-agreed relevant words”
+一组事先约定好的词库；此处为“库、储备”义，非“银行”</td>
+</tr>
+<tr>
+<td>in one go</td>
+<td>phr.</td>
+<td>一口气、一次性完成</td>
+<td>“sit the exam all in one go” 一次性考完（文中被否决的方案）；对比
+over a number of weeks</td>
+</tr>
+<tr>
+<td>fit around</td>
+<td>phr.</td>
+<td>围着……转、迁就</td>
+<td>“They shouldn’t expect us to fit around their exam system”
+不应指望我们去迁就考试制度；另有“挤时间做某事”义</td>
+</tr>
+<tr>
+<td>integrity</td>
+<td>n.</td>
+<td>公正性；诚信正直</td>
+<td>“a duty to maintain the integrity of qualifications”
+维护证书资质的公正性；考试机构声明高频词</td>
+</tr>
+<tr>
+<td>mitigating</td>
+<td>adj.</td>
+<td>缓解性的、起减轻作用的</td>
+<td>“the mitigating arrangements we have proposed”
+我们提出的缓解性安排；动词 mitigate 缓解，mitigating circumstances
+减刑情节</td>
+</tr>
+<tr>
+<td>deemed</td>
+<td>v.</td>
+<td>被认为、被认定</td>
+<td>“have not been deemed compatible with these requirements”
+被认定与要求不符；官方、法律文书高频，deem sth compatible =
+认定相符</td>
+</tr>
+<tr>
+<td>dismissed</td>
+<td>v.</td>
+<td>被轻视、被无视</td>
+<td>“Romi had been dismissed in many areas of her life”
+罗米在人生许多方面都被轻视；另两义：被解雇／被驳回</td>
+</tr>
+<tr>
+<td>underestimate</td>
+<td>v.</td>
+<td>低估</td>
+<td>“People sometimes underestimate what I can do”
+人们有时低估我的能力；反义 overestimate 高估</td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>n.</td>
+<td>能力、潜能</td>
+<td>“proving her capacity and proving her worth”
+证明她的能力与价值；另一常用义“容量、载量”</td>
+</tr>
+<tr>
+<td>cerebral palsy</td>
+<td>n.</td>
+<td>脑瘫</td>
+<td>“One, who has cerebral palsy, took five months to complete the exam”
+其中一名脑瘫考生花五个月完成考试；医学固定搭配</td>
+</tr>
+<tr>
+<td>eye-gaze technology</td>
+<td>n.</td>
+<td>眼动追踪技术（用眼睛控制电脑）</td>
+<td>“uses special eye-gaze technology to communicate”
+用眼动设备交流；全篇关键词，亦作 eye gaze technology</td>
+</tr>
+<tr>
+<td>Rett Syndrome</td>
+<td>n.</td>
+<td>雷特综合征</td>
+<td>一种遗传性神经发育障碍，多发于女童，影响语言与运动能力；文中 Romi
+所患疾病</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
