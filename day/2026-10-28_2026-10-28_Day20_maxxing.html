@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+@font-face { font-family:'Libre Caslon Display'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/8b853c26f1.ttf); }
+@font-face { font-family:'Tinos'; font-weight:400; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e41a7eb956.ttf); }
+@font-face { font-family:'Tinos'; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/b6cada8c3d.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/df8357e3d6.ttf); }
+@font-face { font-family:'Tinos'; font-style:italic; font-weight:700; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/e20003ca44.ttf); }
+@font-face { font-family:'NanumGothic'; src:url(https://jake-wong-cmd.github.io/edn-7f3k/fonts/3b52fe13ff.ttf); }
+@page { size: A4; margin: 18mm 16mm; }
+html { background:#f3ecda; }
+body { margin:0 auto; background:#f3ecda;
+font-family:'Tinos', Georgia, 'Songti SC', 'NanumGothic', serif;
+font-size: 12pt; line-height: 1.55; color:#2b2620; max-width: 180mm; }
+h1 { font-family:'Libre Caslon Display','Tinos', Georgia,'Songti SC',serif;
+font-size: 23pt; line-height:1.22; font-weight:400; margin: 0 0 1.5mm 0;
+border-bottom: 2.5pt solid #2b2620; padding-bottom: 3mm; }
+h2 { font-family:'Tinos',serif; font-size: 13.5pt; font-weight:700;
+border-top: 1pt solid #8a7f6a; margin-top: 9mm; padding-top: 2.5mm; }
+h1 + p img, figure img { width: 100%; }
+img { width: 100%; margin: 3mm 0 0 0; filter: sepia(.14) contrast(.96); }
+p > em:only-child, figcaption { color:#5c5344; font-style: italic; font-size: 9.8pt; margin-bottom:2mm; }
+p { margin: 0 0 2.6mm 0; text-align: justify; }
+ul { margin: 1mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border:none; border-top:1pt solid #8a7f6a; margin: 6mm 0; }
+table { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2mm 0 4mm 0; }
+th { background:#e9e0c8; text-align:left; font-weight:700; color:#2b2620; }
+th, td { border-bottom: .5pt solid #b3a888; padding: 1.4mm 2.2mm; }
+strong { font-weight: 700; }
+a { color: #2b2620; text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="maxxing-selected-as-dictionary.com-word-of-the-year">‘Maxxing’
+selected as Dictionary.com word of the year</h1>
+<p>26 October 2026</p>
+<p>Ana Faguy</p>
+<p><img role="img" aria-label="A pile of dictionaries" src="https://jake-wong-cmd.github.io/edn-7f3k/img/2026-10-28_2026-10-28_Day20_maxxing_1.jpg" alt="A pile of dictionaries" /> <em>A pile of dictionaries</em></p>
+<p><strong>Americans have gone all in on “maxxing”, making it the 2026
+Word of the Year for Dictionary.com.</strong></p>
+<p>Short for maximising, the term “can be used on its own or added to
+the end of any word to convey you’re doing something to the fullest or
+optimizing it as much as possible”, Dictionary.com said in a
+statement.</p>
+<p>It’s a major departure from two years ago, when the site, after
+analysing US social media trends, news stories, and search data, chose
+demure as word of the year. Last year’s was “67”.</p>
+<p>“Maxxing is the linguistic manifestation of a culture increasingly
+preoccupied with getting the most out of everything,” said Steve
+Johnson, director of lexicography for the Dictionary Media Group.</p>
+<p>Digital media used “maxxing” nearly 19 times more in August 2026
+compared to the 2025 monthly average, Dictionary.com found. The site
+also considered affordability, data centre, odyssey, and the shortened
+form of uncle, “unc”, as potential words of the year.</p>
+<p>On social media, many people in Generation Z and younger - those
+under 30 - post extensively about their maxxing efforts to achieve all
+sorts of perfection.</p>
+<p>Influencers focused on fitness and wellness post about
+“proteinmaxxing” and “fibermaxxing”. Those giving their full attention
+to improving sleep habits say they are “sleepmaxxing”.</p>
+<p>The influencer Clavicular has gained thousands of followers as he
+chronicles his extreme “looksmaxxing” - working to meet a set of
+prescribed criteria for attractiveness, with particular importance given
+to jawlines, eyes and physique.</p>
+<p>“Whatever we’re doing, we want to push it further,” Johnson said.
+“But its expanding uses also reveal how people are responding to that
+impulse. Some embrace it. Some exaggerate it for laughs. Others subvert
+it entirely to describe stepping back from the relentless pursuit of
+more.”</p>
+<p>People were playing with the term - and idea - for decades before
+Clavicular started posting videos.</p>
+<p>In the opening song for the 1990s television show The Fresh Prince of
+Bel-Air, for example, Will Smith raps: “Chillin’ out, maxin’, relaxin’
+all cool.”</p>
+<p>“Unfortunately, by the time the dictionary gets a hold of it, that
+probably means that it’s reached critical mass,” says teacher Lauren
+Cella.</p>
+<p>Cella, a content creator known for her viral Gen Z history lessons,
+says she and her students have been using “maxxing” for some time as a
+suffix.</p>
+<p>“They’re actually, in their own way, reinventing grammar, which I
+think is super cool,” she says.</p>
+<p>Maxxing gives the students permission to “optimise to meet a goal” or
+do something others might think of as “cringe”, and allows them to own
+it, she says.</p>
+<p>“It’s a fun, harmless way that kids are expressing themselves and
+sharing different goals that they have,” she says.</p>
+<p>Linguist Vanessa Croft, who teaches English, says the internet and
+digital media make language move at “warp speed”, even faster than
+radio, film or television ever did. As swiftly as new terms are added to
+the lexicon, they can just as quickly fall out of favour.</p>
+<p>“By the time millennials and Gen X or Gen Y start using the terms,
+Gen Z and Gen Alpha aren’t using those terms anymore,” she says.</p>
+<p>While she and her secondary-school aged students are still “maxxing”
+too, they are now using it “almost ironically”, she says.</p>
+<hr />
+<h2 id="生词标注新闻高频-词汇第二义项">生词标注（新闻高频 +
+词汇第二义项）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>词</th>
+<th>词性</th>
+<th>中文</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>go all in on</td>
+<td>phr.</td>
+<td>全力投入、孤注一掷</td>
+<td>“Americans have gone all in on ‘maxxing’”
+美国人在“maxxing”上全力投入；源自扑克，新闻中表示不遗余力地押注某事</td>
+</tr>
+<tr>
+<td>short for</td>
+<td>phr.</td>
+<td>是……的缩略形式</td>
+<td>“Short for maximising” （它）是 maximising
+的缩写；句首省略主语的后置说明，新闻常见的压缩句法</td>
+</tr>
+<tr>
+<td>convey</td>
+<td>v.</td>
+<td>传达、表达（意思）</td>
+<td>“to convey you’re doing something to the fullest”
+传达“你在把某事做到极致”；第二义项，第一义“运输”多用于具体货物</td>
+</tr>
+<tr>
+<td>departure</td>
+<td>n.</td>
+<td>背离、转向</td>
+<td>“a major departure from two years ago”
+与两年前大相径庭；此处不是“离开／出发”，而是“偏离既有做法”</td>
+</tr>
+<tr>
+<td>manifestation</td>
+<td>n.</td>
+<td>体现、表征</td>
+<td>“the linguistic manifestation of a culture”
+一种文化的语言表征；manifest 显现，学术与评论高频</td>
+</tr>
+<tr>
+<td>preoccupied with</td>
+<td>adj.</td>
+<td>一心想着、执着于</td>
+<td>“a culture increasingly preoccupied with getting the most out of
+everything” 越来越执着于把一切榨到极致的社会</td>
+</tr>
+<tr>
+<td>lexicography</td>
+<td>n.</td>
+<td>词典编纂（学）</td>
+<td>“director of lexicography” 词典编纂主管；lexicon
+词汇库、lexicographer 词典编纂者</td>
+</tr>
+<tr>
+<td>chronicle</td>
+<td>v.</td>
+<td>记录、逐日记述</td>
+<td>“as he chronicles his extreme ‘looksmaxxing’”
+他记录自己极端的“颜值最大化”；名词“编年史”，动词用法为新闻常见</td>
+</tr>
+<tr>
+<td>prescribed</td>
+<td>adj.</td>
+<td>规定的、预设的</td>
+<td>“a set of prescribed criteria for attractiveness”
+一套被规定好的吸引力标准；第二义项，非“医生开的（药）”</td>
+</tr>
+<tr>
+<td>impulse</td>
+<td>n.</td>
+<td>冲动、内在驱力</td>
+<td>“how people are responding to that impulse”
+人们如何回应那股冲动；心理与商业报道常用</td>
+</tr>
+<tr>
+<td>subvert</td>
+<td>v.</td>
+<td>颠覆、反用</td>
+<td>“Others subvert it entirely” 另一些人则彻底反用它；sub-（在下）+
+vert（转），从底下翻转原有含义</td>
+</tr>
+<tr>
+<td>relentless</td>
+<td>adj.</td>
+<td>不停歇的、不留情的</td>
+<td>“stepping back from the relentless pursuit of more”
+从对“更多”的无休止追逐中退出</td>
+</tr>
+<tr>
+<td>critical mass</td>
+<td>n.</td>
+<td>临界规模、普及临界点</td>
+<td>“it’s reached critical mass”
+它已经达到人尽皆知、自行扩散的程度；物理术语转义</td>
+</tr>
+<tr>
+<td>cringe</td>
+<td>n./adj.</td>
+<td>令人尴尬（的事物）</td>
+<td>“something others might think of as ‘cringe’”
+别人可能觉得“尬”的事；网络语，此处作名词而非动词</td>
+</tr>
+<tr>
+<td>warp speed</td>
+<td>n.</td>
+<td>极速</td>
+<td>“make language move at ‘warp speed’”
+让语言以“曲速”变化；出自《星际迷航》，喻快得超乎寻常</td>
+</tr>
+<tr>
+<td>lexicon</td>
+<td>n.</td>
+<td>（某语言或领域的）词汇总汇</td>
+<td>“as new terms are added to the lexicon”
+新词进入词汇库；指整体词汇系统，不是某一本词典</td>
+</tr>
+<tr>
+<td>fall out of favour</td>
+<td>phr.</td>
+<td>失宠、不再流行</td>
+<td>“they can just as quickly fall out of favour”
+也可能同样迅速地失宠；英式拼写 favour</td>
+</tr>
+<tr>
+<td>ironically</td>
+<td>adv.</td>
+<td>反讽地、说反话地</td>
+<td>“using it ‘almost ironically’”
+几乎是带着反讽在用；区别于句首“具有讽刺意味的是”</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
